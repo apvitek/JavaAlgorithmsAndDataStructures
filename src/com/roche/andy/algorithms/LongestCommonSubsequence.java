@@ -1,4 +1,9 @@
-package com.roche.andy.algorithms.DynamicProgramming;
+package com.roche.andy.algorithms;
+
+import static java.lang.Math.max;
+
+// Time Complexity: O(mn) which is much better than the worst case time complexity of Naive Recursive implementation,
+// O(2^n)
 
 // Dynamic Programming Java implementation of LCS problem
 public class LongestCommonSubsequence {
@@ -26,11 +31,6 @@ public class LongestCommonSubsequence {
         }
 
         return memoized[lengthA][lengthB];
-    }
-
-    /* Utility function to get max of 2 integers */
-    private int max(int a, int b) {
-        return (a > b) ? a : b;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
