@@ -1,13 +1,15 @@
-package com.roche.andy;
+package com.roche.andy.graphs;
 
 public class DepthFirstSearch {
     // A function used by DepthFirstSearch
-    private static void DFSUtil(Graph graph, int v, boolean visited[]) {
+    private static void DFSUtil(Graph graph, int vertex, boolean visited[]) {
+        System.out.print(vertex + " ");
+
         // Mark the current node as visited and print it
-        visited[v] = true;
+        visited[vertex] = true;
 
         // Recur for all the vertices adjacent to this vertex
-        for (Integer n : graph.getAdjacencyLists()[v]) {
+        for (Integer n : graph.getAdjacencyLists()[vertex]) {
             if (!visited[n]) {
                 DFSUtil(graph, n, visited);
             }
@@ -22,6 +24,8 @@ public class DepthFirstSearch {
         // Call the recursive helper function to print DepthFirstSearch traversal
         DFSUtil(graph, v, visited);
     }
+
+    // -----------------------------------------------------------------------------------------------------------------
 
     public static void main(String args[]) {
         Graph g = new Graph(4);

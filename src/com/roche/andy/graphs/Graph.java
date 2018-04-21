@@ -1,4 +1,4 @@
-package com.roche.andy;
+package com.roche.andy.graphs;
 
 import java.util.LinkedList;
 

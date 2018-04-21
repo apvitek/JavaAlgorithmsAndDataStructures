@@ -1,7 +1,4 @@
-package com.roche.andy;
-
-// Java program to print BFS traversal from a given source vertex.
-// BFS(int s) traverses vertices reachable from s.
+package com.roche.andy.graphs;
 
 import java.util.LinkedList;
 
@@ -34,6 +31,8 @@ class BreadthFirstSearch {
             }
         }
     }
+
+    // -----------------------------------------------------------------------------------------------------------------
 
     // Driver method to
     public static void main(String args[]) {
