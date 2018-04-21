@@ -123,7 +123,7 @@ class BSTTest {
           30      70
          /  \    /  \
         20   40  60   80 */
-        
+
         tree.insert(50);
         tree.insert(30);
         tree.insert(20);
