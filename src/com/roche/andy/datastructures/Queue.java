@@ -2,14 +2,14 @@ package com.roche.andy.datastructures;
 
 // A class to represent a queue
 // The queue, front stores the front node of LL and rear stores the last node of LL
-class Queue {
+class Queue<T> {
     // A linked list (LL) node to store a queue entry
-    class QNode {
-        int key;
+    class QNode<K> {
+        K key;
         QNode next;
 
         // Constructor to create a new linked list node
-        QNode(int key) {
+        QNode(K key) {
             this.key = key;
             this.next = null;
         }
@@ -22,9 +22,9 @@ class Queue {
     }
 
     // Method to add an key to the queue.
-    void enqueue(int key) {
+    void enqueue(T key) {
         // Create a new LL node
-        QNode temp = new QNode(key);
+        QNode temp = new QNode<>(key);
 
         // If queue is empty, then new node is front and rear both
         if (this.rear == null) {
@@ -59,7 +59,7 @@ class Queue {
 
 class QueueTest {
     public static void main(String[] args) {
-        Queue q = new Queue();
+        Queue<Integer> q = new Queue<>();
         q.enqueue(10);
         q.enqueue(20);
         q.dequeue();

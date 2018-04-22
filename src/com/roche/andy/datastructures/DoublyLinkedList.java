@@ -1,8 +1,6 @@
 package com.roche.andy.datastructures;
 
 class DoublyLinkedList<T extends Comparable<T>> {
-    Node head; // head of list
-
     // Doubly Linked list Node
     class Node<K> {
         K data;
@@ -15,6 +13,8 @@ class DoublyLinkedList<T extends Comparable<T>> {
             data = d;
         }
     }
+
+    Node head; // head of list
 
     // Adding a node at the front of the list
     void push(T newData) {
