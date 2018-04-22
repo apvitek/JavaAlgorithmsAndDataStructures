@@ -1,26 +1,26 @@
 package com.roche.andy.datastructures;
 
-class DoublyLinkedList {
+class DoublyLinkedList<T extends Comparable<T>> {
     Node head; // head of list
 
     // Doubly Linked list Node
-    class Node {
-        int data;
+    class Node<K> {
+        K data;
         Node prev;
         Node next;
 
 
         // Constructor to create a new node; next and prev is by default initialized as null
-        Node(int d) {
+        Node(K d) {
             data = d;
         }
     }
 
     // Adding a node at the front of the list
-    void push(int newData) {
+    void push(T newData) {
         // 1. Allocate node
         // 2. Put in the data
-        Node newNode = new Node(newData);
+        Node newNode = new Node<>(newData);
 
         // 3. Make next of new node as head and previous as NULL
         newNode.next = head;
@@ -35,7 +35,7 @@ class DoublyLinkedList {
     }
 
     // Given a node as previousNode, insert a new node after the given node
-    void insertAfter(Node previousNode, int newData) {
+    void insertAfter(Node previousNode, T newData) {
         // 1. Check if the given prev_node is NULL
         if (previousNode == null) {
             System.out.println("The given previous node cannot be NULL ");
@@ -44,7 +44,7 @@ class DoublyLinkedList {
 
         // 2. Allocate node
         // 3. Put in the data
-        Node newNode = new Node(newData);
+        Node newNode = new Node<>(newData);
 
         // 4. Make next of new node as next of prev_node
         newNode.next = previousNode.next;
@@ -62,7 +62,7 @@ class DoublyLinkedList {
     }
 
     // Given a node as previousNode, insert a new node before the given node
-    void insertBefore(Node previousNode, int newData) {
+    void insertBefore(Node previousNode, T newData) {
         if (previousNode == head) {
             push(newData);
 
@@ -72,10 +72,10 @@ class DoublyLinkedList {
     }
 
     // Add a node at the end of the list
-    void append(int newData) {
+    void append(T newData) {
         // 1. allocate node
         // 2. put in the data
-        Node newNode = new Node(newData);
+        Node newNode = new Node<>(newData);
 
         Node last = head;/* used in step 5*/
 
@@ -115,7 +115,7 @@ class DoublyLinkedList {
 class DLLTest {
     public static void main(String[] args) {
         // Start with the empty list
-        DoublyLinkedList dll = new DoublyLinkedList();
+        DoublyLinkedList<Integer> dll = new DoublyLinkedList<>();
 
         // Insert 6. So linked list becomes 6->NULL
         dll.append(6);
