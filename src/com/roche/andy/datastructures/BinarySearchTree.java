@@ -47,20 +47,6 @@ class BinarySearchTree<T extends Comparable<T>> {
         return root;
     }
 
-    // This method mainly calls InorderRec()
-    void inorder() {
-        inorderRec(root);
-    }
-
-    // A utility function to do inorder traversal of BST
-    private void inorderRec(Node root) {
-        if (root != null) {
-            inorderRec(root.left);
-            System.out.print(root.key + " ");
-            inorderRec(root.right);
-        }
-    }
-
     // This method mainly calls deleteRecursive()
     void deleteKey(T key) {
         root = deleteRecursive(root, key);
@@ -111,6 +97,48 @@ class BinarySearchTree<T extends Comparable<T>> {
 
         return minimum;
     }
+
+    // This method mainly calls inorderRec()
+    void inorder() {
+        inorderRec(root);
+    }
+
+    // A utility function to do inorder traversal of BST
+    private void inorderRec(Node root) {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.print(root.key + " ");
+            inorderRec(root.right);
+        }
+    }
+
+    // This method mainly calls preorderRec()
+    void preorder() {
+        preorderRec(root);
+    }
+
+    // A utility function to do preorder traversal of BST
+    private void preorderRec(Node root) {
+        if (root != null) {
+            System.out.print(root.key + " ");
+            preorderRec(root.left);
+            preorderRec(root.right);
+        }
+    }
+
+    // This method mainly calls postorderRec()
+    void postorder() {
+        postorderRec(root);
+    }
+
+    // A utility function to do postorder traversal of BST
+    private void postorderRec(Node root) {
+        if (root != null) {
+            postorderRec(root.left);
+            postorderRec(root.right);
+            System.out.print(root.key + " ");
+        }
+    }
 }
 
 class BSTTest {
@@ -149,5 +177,11 @@ class BSTTest {
         tree.deleteKey(50);
         System.out.println("Inorder traversal of the modified tree");
         tree.inorder();
+
+        System.out.println("\nPreorder traversal of the modified tree");
+        tree.preorder();
+
+        System.out.println("\nPostorder traversal of the modified tree");
+        tree.postorder();
     }
 }
