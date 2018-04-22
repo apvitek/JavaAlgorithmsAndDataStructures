@@ -1,44 +1,83 @@
 package com.roche.andy.datastructures;
 
 // Java program to demonstrate delete operation in binary search tree
-@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
-class BinarySearchTree {
+@SuppressWarnings({"WeakerAccess", "ConstantConditions", "unchecked"})
+class BinarySearchTree<T extends Comparable<T>> {
     // Class containing left and right child of current node and key value
-    class Node {
-        int key;
-        Node left, right;
+    class Node<K> {
+        K key;
+        Node<K> left, right;
 
-        Node(int item) {
+        Node(K item) {
             key = item;
             left = right = null;
         }
     }
 
     // Root of BST
-    private Node root;
+    private Node<T> root;
 
     // Constructor
     BinarySearchTree() {
         root = null;
     }
 
-    // This method mainly calls deleteRecursive()
-    void deleteKey(int key) {
-        root = deleteRecursive(root, key);
+    // This method mainly calls insertRecursive()
+    void insert(T key) {
+        root = insertRecursive(root, key);
     }
 
     // A recursive function to insert a new key in BST
-    private Node deleteRecursive(Node root, int key) {
+    private Node insertRecursive(Node<T> root, T key) {
+        // If the tree is empty, return a new node
+        if (root == null) {
+            root = new Node<>(key);
+            return root;
+        }
+
+        // Otherwise, recur down the tree
+        if (key.compareTo(root.key) < 0) {
+            root.left = insertRecursive(root.left, key);
+
+        } else if (key.compareTo(root.key) > 0) {
+            root.right = insertRecursive(root.right, key);
+        }
+
+        // Return the (unchanged) node pointer
+        return root;
+    }
+
+    // This method mainly calls InorderRec()
+    void inorder() {
+        inorderRec(root);
+    }
+
+    // A utility function to do inorder traversal of BST
+    private void inorderRec(Node root) {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.print(root.key + " ");
+            inorderRec(root.right);
+        }
+    }
+
+    // This method mainly calls deleteRecursive()
+    void deleteKey(T key) {
+        root = deleteRecursive(root, key);
+    }
+
+    // A recursive function to delete a key in BST
+    private Node deleteRecursive(Node<T> root, T key) {
         // Base Case: If the tree is empty
         if (root == null) {
             return root;
         }
 
         // Otherwise, recur down the tree
-        if (key < root.key) {
+        if (key.compareTo(root.key) < 0) {
             root.left = deleteRecursive(root.left, key);
 
-        } else if (key > root.key) {
+        } else if (key.compareTo(root.key) > 0) {
             root.right = deleteRecursive(root.right, key);
 
             // if key is same as root's key, then this is the node to be deleted
@@ -62,8 +101,8 @@ class BinarySearchTree {
         return root;
     }
 
-    int minValue(Node root) {
-        int minimum = root.key;
+    T minValue(Node<T> root) {
+        T minimum = root.key;
 
         while (root.left != null) {
             minimum = root.left.key;
@@ -72,50 +111,11 @@ class BinarySearchTree {
 
         return minimum;
     }
-
-    // This method mainly calls insertRecursive()
-    void insert(int key) {
-        root = insertRecursive(root, key);
-    }
-
-    // A recursive function to insert a new key in BST
-    private Node insertRecursive(Node root, int key) {
-        // If the tree is empty, return a new node
-        if (root == null) {
-            root = new Node(key);
-            return root;
-        }
-
-        // Otherwise, recur down the tree
-        if (key < root.key) {
-            root.left = insertRecursive(root.left, key);
-
-        } else if (key > root.key) {
-            root.right = insertRecursive(root.right, key);
-        }
-
-        // Return the (unchanged) node pointer
-        return root;
-    }
-
-    // This method mainly calls InorderRec()
-    void inorder() {
-        inorderRec(root);
-    }
-
-    // A utility function to do inorder traversal of BST
-    private void inorderRec(Node root) {
-        if (root != null) {
-            inorderRec(root.left);
-            System.out.print(root.key + " ");
-            inorderRec(root.right);
-        }
-    }
 }
 
 class BSTTest {
     public static void main(String args[]) {
-        BinarySearchTree tree = new BinarySearchTree();
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
 
         /* Let us create following BST
               50
