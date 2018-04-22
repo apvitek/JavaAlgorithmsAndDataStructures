@@ -4,9 +4,9 @@ package com.roche.andy.datastructures;
 // The queue, front stores the front node of LL and rear stores the last node of LL
 class Queue<T> {
     // A linked list (LL) node to store a queue entry
-    class QNode<K> {
+    private class QNode<K> {
         K key;
-        QNode next;
+        QNode<K> next;
 
         // Constructor to create a new linked list node
         QNode(K key) {
@@ -15,7 +15,7 @@ class Queue<T> {
         }
     }
 
-    private QNode front, rear;
+    private QNode<T> front, rear;
 
     Queue() {
         this.front = this.rear = null;
@@ -24,7 +24,7 @@ class Queue<T> {
     // Method to add an key to the queue.
     void enqueue(T key) {
         // Create a new LL node
-        QNode temp = new QNode<>(key);
+        QNode<T> temp = new QNode<>(key);
 
         // If queue is empty, then new node is front and rear both
         if (this.rear == null) {
@@ -38,14 +38,14 @@ class Queue<T> {
     }
 
     // Method to remove an key from queue.
-    QNode dequeue() {
+    T dequeue() {
         // If queue is empty, return NULL.
         if (this.front == null) {
             return null;
         }
 
         // Store previous front and move front one node ahead
-        QNode temp = this.front;
+        QNode<T> temp = this.front;
         this.front = this.front.next;
 
         // If front becomes NULL, then change rear also as NULL
@@ -53,7 +53,7 @@ class Queue<T> {
             this.rear = null;
         }
 
-        return temp;
+        return temp.key;
     }
 }
 
@@ -68,6 +68,6 @@ class QueueTest {
         q.enqueue(40);
         q.enqueue(50);
 
-        System.out.println("Dequeued item is " + q.dequeue().key);
+        System.out.println("Dequeued item is " + q.dequeue());
     }
 }

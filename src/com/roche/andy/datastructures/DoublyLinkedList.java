@@ -4,9 +4,7 @@ class DoublyLinkedList<T extends Comparable<T>> {
     // Doubly Linked list Node
     class Node<K> {
         K data;
-        Node prev;
-        Node next;
-
+        Node<K> prev, next;
 
         // Constructor to create a new node; next and prev is by default initialized as null
         Node(K d) {
@@ -14,13 +12,13 @@ class DoublyLinkedList<T extends Comparable<T>> {
         }
     }
 
-    Node head; // head of list
+    Node<T> head; // head of list
 
     // Adding a node at the front of the list
     void push(T newData) {
         // 1. Allocate node
         // 2. Put in the data
-        Node newNode = new Node<>(newData);
+        Node<T> newNode = new Node<>(newData);
 
         // 3. Make next of new node as head and previous as NULL
         newNode.next = head;
@@ -75,9 +73,8 @@ class DoublyLinkedList<T extends Comparable<T>> {
     void append(T newData) {
         // 1. allocate node
         // 2. put in the data
-        Node newNode = new Node<>(newData);
-
-        Node last = head;/* used in step 5*/
+        Node<T> newNode = new Node<>(newData);
+        Node<T> last = head;
 
         // 3. This new node is going to be the last node, so make next of it as NULL
         newNode.next = null;
@@ -102,10 +99,12 @@ class DoublyLinkedList<T extends Comparable<T>> {
     }
 
     // This function prints contents of linked list starting from the given node
-    void printList(Node node) {
-        while (node != null) {
-            System.out.print(node.data + " ");
-            node = node.next;
+    void printList() {
+        Node<T> temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
         }
 
         System.out.println();
@@ -128,14 +127,14 @@ class DLLTest {
 
         // Insert 4 at the end. So linked list becomes 1->7->6->4->NULL
         dll.append(4);
-        dll.printList(dll.head);
+        dll.printList();
 
         // Insert 8, after 7. So linked list becomes 1->7->8->6->4->NULL
         dll.insertAfter(dll.head.next, 8);
-        dll.printList(dll.head);
+        dll.printList();
 
         // Insert 9, before head. So linked list becomes 9->1->7->8->6->4->NULL
         dll.insertBefore(dll.head, 9);
-        dll.printList(dll.head);
+        dll.printList();
     }
 }

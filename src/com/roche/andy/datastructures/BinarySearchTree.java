@@ -4,7 +4,7 @@ package com.roche.andy.datastructures;
 @SuppressWarnings({"WeakerAccess", "ConstantConditions", "unchecked"})
 class BinarySearchTree<T extends Comparable<T>> {
     // Class containing left and right child of current node and key value
-    class Node<K> {
+    private class Node<K> {
         K key;
         Node<K> left, right;
 
@@ -66,9 +66,9 @@ class BinarySearchTree<T extends Comparable<T>> {
         } else if (key.compareTo(root.key) > 0) {
             root.right = deleteRecursive(root.right, key);
 
-            // if key is same as root's key, then this is the node to be deleted
+            // If key is same as root's key, then this is the node to be deleted
         } else {
-            // node with only one child or no child
+            // *** Case 1: node with only one child or no child ***
             if (root.left == null) {
                 return root.right;
 
@@ -76,8 +76,8 @@ class BinarySearchTree<T extends Comparable<T>> {
                 return root.left;
             }
 
-            // node with two children: Get the inorder successor (smallest
-            // in the right subtree)
+            // *** Case 2: node with two children ***
+            // Get the inorder successor (smallest in the right subtree)
             root.key = minValue(root.right);
 
             // Delete the inorder successor
@@ -160,8 +160,16 @@ class BSTTest {
         tree.insert(60);
         tree.insert(80);
 
-        System.out.println("Inorder traversal of the given tree");
+        System.out.println("Inorder traversal of the modified tree");
         tree.inorder();
+
+        System.out.println("\nPreorder traversal of the modified tree");
+        tree.preorder();
+
+        System.out.println("\nPostorder traversal of the modified tree");
+        tree.postorder();
+
+        System.out.println();
 
         System.out.println("\nDelete 20");
         tree.deleteKey(20);
@@ -175,6 +183,9 @@ class BSTTest {
 
         System.out.println("\nDelete 50");
         tree.deleteKey(50);
+
+        System.out.println();
+
         System.out.println("Inorder traversal of the modified tree");
         tree.inorder();
 

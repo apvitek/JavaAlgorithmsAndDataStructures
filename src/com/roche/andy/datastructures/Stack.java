@@ -7,7 +7,7 @@ class Stack<T> {
     // A linked list (LL) node to store a queue entry
     class SNode<K> {
         K key;
-        SNode next;
+        SNode<K> next;
 
         // Constructor to create a new linked list node
         SNode(K key) {
@@ -16,7 +16,7 @@ class Stack<T> {
         }
     }
 
-    private SNode top;
+    private SNode<T> top;
 
     Stack() {
         this.top = null;
@@ -25,7 +25,7 @@ class Stack<T> {
     // Method to add an key to the stack
     void push(T key) {
         // Create a new stack node
-        SNode temp = new SNode<>(key);
+        SNode<T> temp = new SNode<>(key);
 
         // If stack is empty, then new node is top and rear both
         if (this.top == null) {
@@ -39,17 +39,17 @@ class Stack<T> {
     }
 
     // Method to remove an key from queue.
-    SNode pop() throws EmptyStackException {
+    T pop() throws EmptyStackException {
         // If queue is empty, return NULL.
         if (this.top == null) {
             throw new EmptyStackException();
         }
 
         // Store previous top and move top one node ahead
-        SNode temp = this.top;
+        SNode<T> temp = this.top;
         this.top = this.top.next;
 
-        return temp;
+        return temp.key;
     }
 }
 
@@ -61,10 +61,10 @@ class StackTest {
         s.push(30);
 
         try {
-            System.out.println(s.pop().key + " Popped from stack");
-            System.out.println(s.pop().key + " Popped from stack");
-            System.out.println(s.pop().key + " Popped from stack");
-            System.out.println(s.pop().key + " Popped from stack");
+            System.out.println(s.pop() + " Popped from stack");
+            System.out.println(s.pop() + " Popped from stack");
+            System.out.println(s.pop() + " Popped from stack");
+            System.out.println(s.pop() + " Popped from stack");
 
         } catch (EmptyStackException e) {
             System.out.println("Stack is empty");
