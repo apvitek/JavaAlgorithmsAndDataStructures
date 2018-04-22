@@ -20,7 +20,7 @@ class HashNode<K, V> {
     }
 }
 
-// Class to represent entire hash table
+// Class to represent the hash table
 class HashTable<K, V> {
     // bucketArray is used to store array of chains
     private ArrayList<HashNode<K, V>> bucketArray;

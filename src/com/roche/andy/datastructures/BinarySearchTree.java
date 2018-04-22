@@ -28,7 +28,7 @@ class BinarySearchTree {
     }
 
     // A recursive function to insert a new key in BST
-    Node deleteRecursive(Node root, int key) {
+    private Node deleteRecursive(Node root, int key) {
         // Base Case: If the tree is empty
         if (root == null) {
             return root;
@@ -41,7 +41,7 @@ class BinarySearchTree {
         } else if (key > root.key) {
             root.right = deleteRecursive(root.right, key);
 
-            // if key is same as root's key, then This is the node to be deleted
+            // if key is same as root's key, then this is the node to be deleted
         } else {
             // node with only one child or no child
             if (root.left == null) {
@@ -79,7 +79,7 @@ class BinarySearchTree {
     }
 
     // A recursive function to insert a new key in BST
-    Node insertRecursive(Node root, int key) {
+    private Node insertRecursive(Node root, int key) {
         // If the tree is empty, return a new node
         if (root == null) {
             root = new Node(key);
