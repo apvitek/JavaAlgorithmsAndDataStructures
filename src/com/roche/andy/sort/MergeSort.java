@@ -68,18 +68,18 @@ class MergeSort {
         }
     }
 
-    // Main function that sorts arr[left..right] using merge()
-    private void sort(int arr[], int left, int right) {
+    // Main function that sorts array[left..right] using merge()
+    private void sort(int array[], int left, int right) {
         if (left < right) {
             // Find the middle point
             int middle = (left + right) / 2;
 
             // Sort first and second halves
-            sort(arr, left, middle);
-            sort(arr, middle + 1, right);
+            sort(array, left, middle);
+            sort(array, middle + 1, right);
 
             // Merge the sorted halves
-            merge(arr, left, middle, right);
+            merge(array, left, middle, right);
         }
     }
 
