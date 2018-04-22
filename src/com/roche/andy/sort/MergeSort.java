@@ -1,10 +1,20 @@
 package com.roche.andy.sort;
 
 /*
- Merge Sort is a Divide and Conquer algorithm. It divides input array in two halves, calls itself for the two halves
- and then merges the two sorted halves.
- The merge() function is used for merging two halves. The merge(arr, l, m, r) is key process that assumes that
- arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one.
+Like QuickSort, Merge Sort is a Divide and Conquer algorithm. It divides input array in two halves, calls itself for
+the two halves and then merges the two sorted halves. The merge() function is used for merging two halves. The merge
+(array, left, middle, right) is key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two
+sorted sub-arrays into one.
+
+MergeSort(arr[], l,  r)
+If r > l
+   1. Find the middle point to divide the array into two halves
+   2. Call mergeSort for first half
+   3. Call mergeSort for second half
+   4. Merge the two halves sorted in step 2 and 3:
+
+Time complexity: O(n Log(n)) (divides the array in two halves and takes linear time to merge them)
+Space complexity: O(n)
 */
 
 class MergeSort {
