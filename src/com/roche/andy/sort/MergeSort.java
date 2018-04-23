@@ -6,8 +6,8 @@ the two halves and then merges the two sorted halves. The merge() function is us
 (array, left, middle, right) is key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two
 sorted sub-arrays into one.
 
-MergeSort(arr[], l,  r)
-If r > l
+MergeSort(array[], left,  right)
+If right > left
    1. Find the middle point to divide the array into two halves
    2. Call mergeSort for first half
    3. Call mergeSort for second half

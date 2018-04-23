@@ -2,10 +2,9 @@ package com.roche.andy.sort;
 
 /*
 The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order)
-from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array.
-
-1) The subarray which is already sorted.
-2) Remaining subarray which is unsorted.
+from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array:
+    1) The subarray which is already sorted.
+    2) Remaining subarray which is unsorted.
 
 In every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is
 picked and moved to the sorted subarray.
@@ -30,7 +29,7 @@ arr[] = 64 25 12 22 11
 // and place it at beginning of arr[3...4]
 11 12 22 25 64
 
-Runtime: O(n^2) (two nested loops)
+Time complexity: O(n^2) (two nested loops)
 Space complexity: O(1)
 */
 

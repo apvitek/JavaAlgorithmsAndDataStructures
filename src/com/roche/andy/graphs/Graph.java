@@ -13,13 +13,14 @@ class Graph {
         numberOfVertexes = v;
         adjacencyLists = new LinkedList[v];
 
-        for (int i = 0; i < v; ++i)
+        for (int i = 0; i < v; ++i) {
             adjacencyLists[i] = new LinkedList();
+        }
     }
 
     // Function to add an edge into the graph
-    void addEdge(int v, int w) {
-        adjacencyLists[v].add(w);
+    void addEdge(int vertexA, int vertexB) {
+        adjacencyLists[vertexA].add(vertexB);
     }
 
     int getNumberOfVertexes() {
