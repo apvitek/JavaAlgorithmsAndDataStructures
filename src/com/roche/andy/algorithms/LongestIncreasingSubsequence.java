@@ -1,6 +1,6 @@
 package com.roche.andy.algorithms;
 
-/* Dynamic Programming Java implementation of LIS problem */
+// Dynamic Programming Java implementation of LIS problem
 // Time complexity: O(n^2)
 public class LongestIncreasingSubsequence {
     // Returns the length of the longest increasing subsequence in array[] of size arraySize

@@ -3,7 +3,6 @@ package com.roche.andy.algorithms;
 import static java.lang.Math.max;
 
 // Time Complexity: O(nW) where n is the number of items and W is the capacity of knapsack
-
 public class ZeroOneKnapsack {
     // Returns the maximum value that can be put in a knapsack of capacity capacity
     private static int knapsack(int capacity, int weights[], int values[], int arrayLength) {

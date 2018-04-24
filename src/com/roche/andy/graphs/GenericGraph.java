@@ -9,7 +9,7 @@ public class GenericGraph<T extends Comparable<T>> {
         UNVISITED, VISITED
     }
 
-    // vertex class
+    // Vertex class
     private class Vertex {
         private T value;
         private ArrayList<Vertex> adjacencyList;
@@ -28,6 +28,7 @@ public class GenericGraph<T extends Comparable<T>> {
         State getState() {
             return state;
         }
+
         void setState(State s) {
             state = s;
         }
@@ -49,15 +50,15 @@ public class GenericGraph<T extends Comparable<T>> {
 
             stringBuilder.append("Vertex: ").append(value).append(": ");
 
-            for (Vertex each : adjacencyList) {
-                stringBuilder.append(each.getValue()).append(" ");
+            for (Vertex vertex : adjacencyList) {
+                stringBuilder.append(vertex.getValue()).append(" ");
             }
 
             return stringBuilder.toString();
         }
     }
 
-    // edge class
+    // Edge class
     class Edge {
         private Vertex x, y;
 
@@ -99,9 +100,9 @@ public class GenericGraph<T extends Comparable<T>> {
     }
 
     private Vertex findVertex(T v) {
-        for (Vertex each : vertexList) {
-            if (each.getValue().compareTo(v) == 0) {
-                return each;
+        for (Vertex vertex : vertexList) {
+            if (vertex.getValue().compareTo(v) == 0) {
+                return vertex;
             }
         }
 
@@ -134,7 +135,6 @@ public class GenericGraph<T extends Comparable<T>> {
         DFS(vertexWithElement);
     }
 
-    // Recurse through nodes
     private void DFS(Vertex vertex) {
         System.out.print(vertex.value + " ");
 
@@ -166,7 +166,6 @@ public class GenericGraph<T extends Comparable<T>> {
             return;
         }
 
-        // call recursive function
         DFSUsingStack(vertexWithElement);
     }
 
@@ -186,7 +185,8 @@ public class GenericGraph<T extends Comparable<T>> {
                 System.out.print(nextVertex.value + " ");
                 nextVertex.setState(State.VISITED);
 
-                // Get all adjacent vertices of the popped vertex. If a adjacent has not been visited, then push it
+                // Get all adjacent vertices of the popped vertex.
+                // If a adjacent has not been visited, then push it
                 // to the stack.
                 for (Vertex v : nextVertex.getAdjacentList()) {
                     if (v.isNotVisited()) {
@@ -200,8 +200,8 @@ public class GenericGraph<T extends Comparable<T>> {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (Vertex each : vertexList) {
-            stringBuilder.append(each.toString()).append("\n");
+        for (Vertex vertex : vertexList) {
+            stringBuilder.append(vertex.toString()).append("\n");
         }
 
         return stringBuilder.toString();
@@ -210,8 +210,8 @@ public class GenericGraph<T extends Comparable<T>> {
     String edgesToString() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (Edge each : edgeList) {
-            stringBuilder.append(each);
+        for (Edge edge : edgeList) {
+            stringBuilder.append(edge);
         }
 
         return stringBuilder.toString();

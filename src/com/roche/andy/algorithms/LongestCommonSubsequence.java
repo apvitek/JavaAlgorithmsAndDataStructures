@@ -8,7 +8,7 @@ import static java.lang.Math.max;
 // Dynamic Programming Java implementation of LCS problem
 public class LongestCommonSubsequence {
     // Returns length of LCS for sequenceA[0..lengthA - 1], sequenceB[0..lengthB - 1]
-    private int LCS(char[] sequenceA, char[] sequenceB, int lengthA, int lengthB) {
+    int LCS(char[] sequenceA, char[] sequenceB, int lengthA, int lengthB) {
         int memoized[][] = new int[lengthA + 1][lengthB + 1];
 
         // Following steps build memoized[lengthA + 1][lengthB + 1] in bottom up fashion.

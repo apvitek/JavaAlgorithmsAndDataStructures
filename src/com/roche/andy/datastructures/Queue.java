@@ -1,7 +1,6 @@
 package com.roche.andy.datastructures;
 
 // A class to represent a queue
-// The queue, front stores the front node of LL and rear stores the last node of LL
 class Queue<T> {
     // A linked list (LL) node to store a queue entry
     private class QNode<K> {
