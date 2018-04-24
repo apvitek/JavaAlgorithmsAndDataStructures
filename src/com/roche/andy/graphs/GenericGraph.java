@@ -21,14 +21,13 @@ public class GenericGraph<T extends Comparable<T>> {
             state = State.UNVISITED;
         }
 
-        boolean isVisited() {
-            return state == State.VISITED;
+        boolean isNotVisited() {
+            return state != State.VISITED;
         }
 
         State getState() {
             return state;
         }
-
         void setState(State s) {
             state = s;
         }
@@ -37,12 +36,12 @@ public class GenericGraph<T extends Comparable<T>> {
             return value;
         }
 
-        void addNeighbor(Vertex n) {
-            adjacencyList.add(n);
-        }
-
         ArrayList<Vertex> getAdjacentList() {
             return adjacencyList;
+        }
+
+        void addNeighbor(Vertex n) {
+            adjacencyList.add(n);
         }
 
         public String toString() {
@@ -143,7 +142,7 @@ public class GenericGraph<T extends Comparable<T>> {
 
         // loop through neighbors
         for (Vertex current : vertex.getAdjacentList()) {
-            if (!current.isVisited()) {
+            if (current.isNotVisited()) {
                 DFS(current);
             }
         }
@@ -183,14 +182,14 @@ public class GenericGraph<T extends Comparable<T>> {
             Vertex nextVertex = stack.peek();
             stack.pop();
 
-            if (!nextVertex.isVisited()) {
+            if (nextVertex.isNotVisited()) {
                 System.out.print(nextVertex.value + " ");
                 nextVertex.setState(State.VISITED);
 
                 // Get all adjacent vertices of the popped vertex. If a adjacent has not been visited, then push it
                 // to the stack.
                 for (Vertex v : nextVertex.getAdjacentList()) {
-                    if (!v.isVisited()) {
+                    if (v.isNotVisited()) {
                         stack.push(v);
                     }
                 }
