@@ -5,7 +5,7 @@ import com.roche.andy.javaLanguage.Reversed;
 import java.util.ArrayList;
 import java.util.Stack;
 
-// Enum for the states used by the Depth first search
+// Enum for the states of the graph nodes
 enum State {
     UNVISITED, VISITED
 }
