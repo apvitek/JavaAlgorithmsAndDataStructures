@@ -1,8 +1,8 @@
 package com.roche.andy.datastructures;
 
 // Java program to demonstrate delete operation in binary search tree
-@SuppressWarnings({"WeakerAccess", "ConstantConditions", "unchecked"})
-class BinarySearchTree<T extends Comparable<T>> {
+@SuppressWarnings({"WeakerAccess"})
+public class BinarySearchTree<T extends Comparable<T>> {
     // Class containing left and right child of current node and key value
     private class Node<K> {
         K key;
@@ -18,17 +18,19 @@ class BinarySearchTree<T extends Comparable<T>> {
     private Node<T> root;
 
     // Constructor
-    BinarySearchTree() {
+    public BinarySearchTree() {
         root = null;
     }
 
+    // ----- insert -----
+
     // This method mainly calls insertRecursive()
-    void insert(T key) {
+    public void insert(T key) {
         root = insertRecursive(root, key);
     }
 
     // A recursive function to insert a new key in BST
-    private Node insertRecursive(Node<T> root, T key) {
+    private Node<T> insertRecursive(Node<T> root, T key) {
         // If the tree is empty, return a new node
         if (root == null) {
             root = new Node<>(key);
@@ -47,16 +49,18 @@ class BinarySearchTree<T extends Comparable<T>> {
         return root;
     }
 
+    // ----- delete -----
+
     // This method mainly calls deleteRecursive()
-    void deleteKey(T key) {
+    public void deleteKey(T key) {
         root = deleteRecursive(root, key);
     }
 
     // A recursive function to delete a key in BST
-    private Node deleteRecursive(Node<T> root, T key) {
+    private Node<T> deleteRecursive(Node<T> root, T key) {
         // Base Case: If the tree is empty
         if (root == null) {
-            return root;
+            return null;
         }
 
         // Otherwise, recur down the tree
@@ -74,20 +78,23 @@ class BinarySearchTree<T extends Comparable<T>> {
 
             } else if (root.right == null) {
                 return root.left;
+
+            } else {
+                // *** Case 2: node with two children ***
+                // Get the inorder successor (smallest in the right subtree)
+                root.key = minValue(root.right);
+
+                // Delete the inorder successor
+                root.right = deleteRecursive(root.right, root.key);
             }
-
-            // *** Case 2: node with two children ***
-            // Get the inorder successor (smallest in the right subtree)
-            root.key = minValue(root.right);
-
-            // Delete the inorder successor
-            root.right = deleteRecursive(root.right, root.key);
         }
 
         return root;
     }
 
-    T minValue(Node<T> root) {
+    // ----- min -----
+
+    public T minValue(Node<T> root) {
         T minimum = root.key;
 
         while (root.left != null) {
@@ -98,13 +105,15 @@ class BinarySearchTree<T extends Comparable<T>> {
         return minimum;
     }
 
+    // ----- inorder -----
+
     // This method mainly calls inorderRec()
-    void inorder() {
+    public void inorder() {
         inorderRec(root);
     }
 
     // A utility function to do inorder traversal of BST
-    private void inorderRec(Node root) {
+    private void inorderRec(Node<T> root) {
         if (root != null) {
             inorderRec(root.left);
             System.out.print(root.key + " ");
@@ -112,13 +121,15 @@ class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
+    // ----- preorder -----
+
     // This method mainly calls preorderRec()
-    void preorder() {
+    public void preorder() {
         preorderRec(root);
     }
 
     // A utility function to do preorder traversal of BST
-    private void preorderRec(Node root) {
+    private void preorderRec(Node<T> root) {
         if (root != null) {
             System.out.print(root.key + " ");
             preorderRec(root.left);
@@ -126,13 +137,15 @@ class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
+    // ----- postorder -----
+
     // This method mainly calls postorderRec()
-    void postorder() {
+    public void postorder() {
         postorderRec(root);
     }
 
     // A utility function to do postorder traversal of BST
-    private void postorderRec(Node root) {
+    private void postorderRec(Node<T> root) {
         if (root != null) {
             postorderRec(root.left);
             postorderRec(root.right);
@@ -160,39 +173,47 @@ class BSTTest {
         tree.insert(60);
         tree.insert(80);
 
-        System.out.println("Inorder traversal of the modified tree");
+        System.out.println("Inorder traversal of the original tree: ");
         tree.inorder();
+        System.out.println();
 
-        System.out.println("\nPreorder traversal of the modified tree");
+        System.out.println("Preorder traversal of the original tree: ");
         tree.preorder();
+        System.out.println();
 
-        System.out.println("\nPostorder traversal of the modified tree");
+        System.out.println("Postorder traversal of the modified tree: ");
         tree.postorder();
+        System.out.println();
 
         System.out.println();
 
-        System.out.println("\nDelete 20");
+        System.out.println("Delete 20");
         tree.deleteKey(20);
-        System.out.println("Inorder traversal of the modified tree");
+        System.out.println("Inorder traversal of the modified tree: ");
         tree.inorder();
-
-        System.out.println("\nDelete 30");
-        tree.deleteKey(30);
-        System.out.println("Inorder traversal of the modified tree");
-        tree.inorder();
-
-        System.out.println("\nDelete 50");
-        tree.deleteKey(50);
+        System.out.println();
 
         System.out.println();
 
-        System.out.println("Inorder traversal of the modified tree");
+        System.out.println("Delete 30");
+        tree.deleteKey(30);
+        System.out.println("Inorder traversal of the modified tree: ");
         tree.inorder();
+        System.out.println();
 
-        System.out.println("\nPreorder traversal of the modified tree");
+        System.out.println();
+
+        System.out.println("Delete 50");
+        tree.deleteKey(50);
+        System.out.println("Inorder traversal of the modified tree: ");
+        tree.inorder();
+        System.out.println();
+
+        System.out.println("Preorder traversal of the modified tree: ");
         tree.preorder();
+        System.out.println();
 
-        System.out.println("\nPostorder traversal of the modified tree");
+        System.out.println("Postorder traversal of the modified tree: ");
         tree.postorder();
     }
 }

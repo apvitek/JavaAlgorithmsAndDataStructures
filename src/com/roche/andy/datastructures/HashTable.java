@@ -140,8 +140,9 @@ public class HashTable<K, V> {
         }
 
         // If key was not there
-        if (head == null)
+        if (head == null) {
             return null;
+        }
 
         // Reduce size
         size--;
