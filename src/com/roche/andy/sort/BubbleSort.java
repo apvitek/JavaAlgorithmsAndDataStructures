@@ -44,8 +44,10 @@ class BubbleSort {
         }
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
+
     /* Prints the array */
-    private void printArray(int array[]) {
+    static void printArray(int array[]) {
         for (int element : array) {
             System.out.print(element + " ");
         }
@@ -60,6 +62,6 @@ class BubbleSort {
 
         bubbleSort.bubbleSort(array, array.length);
         System.out.println("Sorted array");
-        bubbleSort.printArray(array);
+        printArray(array);
     }
 }

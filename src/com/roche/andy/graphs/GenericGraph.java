@@ -10,38 +10,42 @@ public class GenericGraph<T extends Comparable<T>> {
     }
 
     // Vertex class
-    private class Vertex {
+    public class Vertex {
         private T value;
         private ArrayList<Vertex> adjacencyList;
         private State state;
 
-        Vertex(T v) {
+        public Vertex(T v) {
             value = v;
             adjacencyList = new ArrayList<>();
             state = State.UNVISITED;
         }
 
-        boolean isNotVisited() {
+        public boolean isNotVisited() {
             return state != State.VISITED;
         }
 
-        State getState() {
+        public State getState() {
             return state;
         }
 
-        void setState(State s) {
+        public void setState(State s) {
             state = s;
         }
 
-        T getValue() {
+        public void setVisited() {
+            state = State.VISITED;
+        }
+
+        public T getValue() {
             return value;
         }
 
-        ArrayList<Vertex> getAdjacentList() {
+        public ArrayList<Vertex> getAdjacentList() {
             return adjacencyList;
         }
 
-        void addNeighbor(Vertex n) {
+        public void addNeighbor(Vertex n) {
             adjacencyList.add(n);
         }
 
@@ -59,10 +63,10 @@ public class GenericGraph<T extends Comparable<T>> {
     }
 
     // Edge class
-    class Edge {
+    public class Edge {
         private Vertex x, y;
 
-        Edge(T v1, T v2) {
+        public Edge(T v1, T v2) {
             x = findVertex(v1);
 
             if (x == null) {
@@ -89,17 +93,17 @@ public class GenericGraph<T extends Comparable<T>> {
     private ArrayList<Vertex> vertexList;
     private ArrayList<Edge> edgeList;
 
-    GenericGraph() {
+    public GenericGraph() {
         vertexList = new ArrayList<>();
         edgeList = new ArrayList<>();
     }
 
-    void addEdge(T x, T y) {
+    public void addEdge(T x, T y) {
         Edge e = new Edge(x, y);
         edgeList.add(e);
     }
 
-    private Vertex findVertex(T v) {
+    public Vertex findVertex(T v) {
         for (Vertex vertex : vertexList) {
             if (vertex.getValue().compareTo(v) == 0) {
                 return vertex;
@@ -109,17 +113,17 @@ public class GenericGraph<T extends Comparable<T>> {
         return null;
     }
 
-    void DFS() {
+    public void DFS() {
         DFS(vertexList.get(0).value);
     }
 
-    private void resetVisitedStatus() {
+    public void resetVisitedStatus() {
         for (Vertex aVertexList : vertexList) {
             aVertexList.setState(State.UNVISITED);
         }
     }
 
-    void DFS(T initialElement) {
+    public void DFS(T initialElement) {
         resetVisitedStatus();
 
         if (vertexList.isEmpty()) {
@@ -148,11 +152,11 @@ public class GenericGraph<T extends Comparable<T>> {
         }
     }
 
-    void DFSUsingStack() {
+    public void DFSUsingStack() {
         DFSUsingStack(vertexList.get(0).value);
     }
 
-    void DFSUsingStack(T initialElement) {
+    public void DFSUsingStack(T initialElement) {
         // Reset visited status
         resetVisitedStatus();
 
@@ -207,7 +211,7 @@ public class GenericGraph<T extends Comparable<T>> {
         return stringBuilder.toString();
     }
 
-    String edgesToString() {
+    public String edgesToString() {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Edge edge : edgeList) {

@@ -13,9 +13,11 @@ If right > left
    3. Call mergeSort for second half
    4. Merge the two halves sorted in step 2 and 3:
 
-Time complexity: O(n Log(n)) (divides the array in two halves and takes linear time to merge them)
+Time complexity: O(n log(n)) (divides the array in two halves and takes linear time to merge them)
 Space complexity: O(n)
 */
+
+import static com.roche.andy.sort.BubbleSort.printArray;
 
 class MergeSort {
     // Merges two subarrays of array[], array[left..middle] and array[middle + 1..right]
@@ -69,14 +71,14 @@ class MergeSort {
     }
 
     // Main function that sorts array[left..right] using merge()
-    private void sort(int array[], int left, int right) {
+    void mergeSort(int array[], int left, int right) {
         if (left < right) {
             // Find the middle point
             int middle = (left + right) / 2;
 
             // Sort first and second halves
-            sort(array, left, middle);
-            sort(array, middle + 1, right);
+            mergeSort(array, left, middle);
+            mergeSort(array, middle + 1, right);
 
             // Merge the sorted halves
             merge(array, left, middle, right);
@@ -84,15 +86,6 @@ class MergeSort {
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-
-    // A utility function to print array of size n
-    private static void printArray(int arr[]) {
-        for (int anArr : arr) {
-            System.out.print(anArr + " ");
-        }
-
-        System.out.println();
-    }
 
     // Driver method
     public static void main(String args[]) {
@@ -102,7 +95,7 @@ class MergeSort {
         printArray(array);
 
         MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(array, 0, array.length - 1);
+        mergeSort.mergeSort(array, 0, array.length - 1);
 
         System.out.println("\nSorted array");
         printArray(array);
