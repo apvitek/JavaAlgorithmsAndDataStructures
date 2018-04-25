@@ -48,7 +48,7 @@ public class DFSandBFS {
             for (Object v : nextVertex.getAdjacentList()) {
                 Vertex thisVertex = (Vertex) v;
 
-                // 8. If a adjacent has not been visited, then mark it visited and enqueue it
+                // 8. If the vertex is not visited, mark it visited and enqueue it
                 if (thisVertex.isNotVisited()) {
                     thisVertex.setVisited();
                     queue.add(thisVertex);
@@ -65,7 +65,7 @@ public class DFSandBFS {
         // 2. Mark the current vertex as visited
         vertex.setVisited();
 
-        // 3. Enqueue current vertex
+        // 3. Push current vertex
         stack.push(vertex);
 
         // 4. While the stack is not empty
@@ -76,7 +76,7 @@ public class DFSandBFS {
             // 6. Perform operation
             System.out.print(Objects.requireNonNull(nextVertex).getValue() + " ");
 
-            // 7. Iterate through all adjacent vertices of the dequeued vertex
+            // 7. Iterate through all adjacent vertices of the popped vertex
             for (Object v : new Reversed(nextVertex.getAdjacentList())) {
                 Vertex thisVertex = (Vertex) v;
 
@@ -104,19 +104,14 @@ public class DFSandBFS {
         Vertex startingVertex = graph.findVertex(0);
 
         System.out.println("Breadth First Traversal (starting from vertex " + startingVertex.getValue() + ")");
-
         BFS(startingVertex);
-
         graph.resetVisitedStatus();
 
         System.out.println("\n\nDepth First Traversal (starting from vertex " + startingVertex.getValue() + ")");
-
         DFS(startingVertex);
-
         graph.resetVisitedStatus();
 
         System.out.println("\n\nDepth First Traversal iterative (starting from vertex " + startingVertex.getValue() + ")");
-
         DFSIterative(startingVertex);
     }
 }
