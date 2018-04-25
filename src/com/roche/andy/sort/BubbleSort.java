@@ -25,13 +25,13 @@ Third Pass:
 ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )
 ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )
 
-Time complexity: O(n^2) (even if the array is sorted)
+Time complexity: O(n^2) (average and worst case, even if sorted)
 Space complexity: O(1)
 */
 
 // Java program for implementation of Bubble Sort
 class BubbleSort {
-    private void bubbleSort(int array[], int arrayLength) {
+    public static void bubbleSort(int array[], int arrayLength) {
         for (int i = 0; i < arrayLength - 1; i++) {
             for (int j = 0; j < arrayLength - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
@@ -46,8 +46,8 @@ class BubbleSort {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    /* Prints the array */
-    static void printArray(int array[]) {
+    // Prints the array
+    public static void printArray(int array[]) {
         for (int element : array) {
             System.out.print(element + " ");
         }
@@ -55,13 +55,15 @@ class BubbleSort {
         System.out.println();
     }
 
-    // Driver method to test above
     public static void main(String args[]) {
-        BubbleSort bubbleSort = new BubbleSort();
         int array[] = {64, 34, 25, 12, 22, 11, 90};
 
-        bubbleSort.bubbleSort(array, array.length);
-        System.out.println("Sorted array");
+        System.out.print("Original array: ");
+        printArray(array);
+
+        bubbleSort(array, array.length);
+
+        System.out.print("Sorted array: ");
         printArray(array);
     }
 }

@@ -11,22 +11,8 @@ The key process in quickSort is partition(). Target of partitions is, given an a
 pivot, put x at its correct position in sorted array and put all smaller elements (smaller than x) before x, and put
 all greater elements (greater than x) after x. All this should be done in linear time.
 
-Time complexity: O(n log(n))
-Space complexity: 0 (in-place sorting)
-
-Why Quick Sort is preferred over MergeSort for sorting Arrays
-Quick Sort in its general form is an in-place quickSort (i.e. it does not require any extra storage) whereas merge quickSort
-requires O(n) extra storage, n denoting the array size which may be quite expensive. Allocating and de-allocating the
-extra space used for merge quickSort increases the running time of the algorithm. Comparing average complexity we find
-that both type of sorts have O(n log(n)) average complexity but the constants differ. For arrays, merge quickSort loses due
-to the use of extra O(n) storage space.
-
-Why MergeSort is preferred over QuickSort for Linked Lists?
-In case of linked lists the case is different mainly due to difference in memory allocation of arrays and linked
-lists. Unlike arrays, linked list nodes may not be adjacent in memory; also, in linked list we can insert
-items in the middle in O(1) extra space and O(1) time, therefore merge operation of merge quickSort can be implemented
-without extra space for linked lists. Quick Sort relies heavily on random access, therefore the overhead increases for
-quick quickSort, while merge quickSort accesses data sequentially and the need of random access is low.
+Time complexity: O(n log(n)) average, O(n^2) worst case
+Space complexity: O(n log(n))
 */
 
 import static com.roche.andy.sort.BubbleSort.printArray;
@@ -82,9 +68,28 @@ public class QuickSort {
     public static void main(String args[]) {
         int array[] = {10, 7, 8, 9, 1, 5};
 
+        System.out.println("Original array: ");
+        printArray(array);
+
         quickSort(array, 0, array.length - 1);
 
-        System.out.println("sorted array");
+        System.out.println("Sorted array: ");
         printArray(array);
     }
 }
+
+/*
+Why Quick Sort is preferred over MergeSort for sorting Arrays
+Quick Sort in its general form is an in-place quickSort (i.e. it does not require any extra storage) whereas merge quickSort
+requires O(n) extra storage, n denoting the array size which may be quite expensive. Allocating and de-allocating the
+extra space used for merge quickSort increases the running time of the algorithm. Comparing average complexity we find
+that both type of sorts have O(n log(n)) average complexity but the constants differ. For arrays, merge quickSort loses due
+to the use of extra O(n) storage space.
+
+Why MergeSort is preferred over QuickSort for Linked Lists?
+In case of linked lists the case is different mainly due to difference in memory allocation of arrays and linked
+lists. Unlike arrays, linked list nodes may not be adjacent in memory; also, in linked list we can insert
+items in the middle in O(1) extra space and O(1) time, therefore merge operation of merge quickSort can be implemented
+without extra space for linked lists. Quick Sort relies heavily on random access, therefore the overhead increases for
+quick quickSort, while merge quickSort accesses data sequentially and the need of random access is low.
+ */
