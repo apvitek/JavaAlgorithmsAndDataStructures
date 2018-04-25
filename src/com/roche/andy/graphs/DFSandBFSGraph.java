@@ -6,7 +6,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class DFSandBFSGraph {
-    static void DFS(GenericGraph graph, GenericGraph.Vertex vertex) {
+    static void DFS(GenericGraph.Vertex vertex) {
         // 1. Perform operation
         System.out.print(vertex.getValue() + " ");
 
@@ -19,12 +19,12 @@ public class DFSandBFSGraph {
 
             // 4. If the vertex is not visited, recurse on that vertex
             if (thisVertex.isNotVisited()) {
-                DFS(graph, thisVertex);
+                DFS(thisVertex);
             }
         }
     }
 
-    static void BFS(GenericGraph graph, GenericGraph.Vertex vertex) {
+    static void BFS(GenericGraph.Vertex vertex) {
         // 1. Create a queue for BFS
         Queue<GenericGraph.Vertex> queue = new LinkedList<>();
 
@@ -103,13 +103,13 @@ public class DFSandBFSGraph {
 
         System.out.println("Breadth First Traversal (starting from vertex " + startingVertex.getValue() + ")");
 
-        BFS(graph, startingVertex);
+        BFS(startingVertex);
 
         graph.resetVisitedStatus();
 
         System.out.println("\n\nDepth First Traversal (starting from vertex " + startingVertex.getValue() + ")");
 
-        DFS(graph, startingVertex);
+        DFS(startingVertex);
 
         graph.resetVisitedStatus();
 
