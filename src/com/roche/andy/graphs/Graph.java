@@ -11,7 +11,7 @@ enum State {
 }
 
 @SuppressWarnings("unchecked")
-public class GenericGraph<T extends Comparable<T>> {
+public class Graph<T extends Comparable<T>> {
     private class Edge {
         private final Vertex<T> x;
         private Vertex<T> y;
@@ -32,7 +32,7 @@ public class GenericGraph<T extends Comparable<T>> {
     private ArrayList<Vertex<T>> vertexList;
     private ArrayList<Edge> edgeList;
 
-    public GenericGraph() {
+    public Graph() {
         vertexList = new ArrayList<>();
         edgeList = new ArrayList<>();
     }
@@ -179,7 +179,7 @@ public class GenericGraph<T extends Comparable<T>> {
 
 class GraphTest {
     public static void main(String args[]) {
-        GenericGraph<Integer> graph = new GenericGraph<>();
+        Graph<Integer> graph = new Graph<>();
 
         graph.addEdge(0, 1);
         graph.addEdge(0, 4);

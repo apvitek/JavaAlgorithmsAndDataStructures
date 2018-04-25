@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Queue;
 import java.util.Stack;
 
-public class DFSandBFSGraph {
+public class DFSandBFS {
     static void DFS(Vertex vertex) {
         // 1. Perform operation
         System.out.print(vertex.getValue() + " ");
@@ -90,7 +90,7 @@ public class DFSandBFSGraph {
     }
 
     public static void main(String args[]) {
-        GenericGraph<Integer> graph = new GenericGraph<>();
+        Graph<Integer> graph = new Graph<>();
 
         graph.addEdge(0, 1);
         graph.addEdge(0, 4);
