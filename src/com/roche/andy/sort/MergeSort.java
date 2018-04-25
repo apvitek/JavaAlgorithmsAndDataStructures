@@ -19,9 +19,9 @@ Space complexity: O(n)
 
 import static com.roche.andy.sort.BubbleSort.printArray;
 
-class MergeSort {
+public class MergeSort {
     // Merges two subarrays of array[], array[left..middle] and array[middle + 1..right]
-    private void merge(int array[], int left, int middle, int right) {
+    private static void merge(int array[], int left, int middle, int right) {
         // Find sizes of two subarrays to be merged
         int sizeLeft = middle - left + 1;
         int sizeRight = right - middle;
@@ -71,7 +71,7 @@ class MergeSort {
     }
 
     // Main function that sorts array[left..right] using merge()
-    void mergeSort(int array[], int left, int right) {
+    public static void mergeSort(int array[], int left, int right) {
         if (left < right) {
             // Find the middle point
             int middle = (left + right) / 2;
@@ -94,8 +94,7 @@ class MergeSort {
         System.out.println("Given Array");
         printArray(array);
 
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.mergeSort(array, 0, array.length - 1);
+        mergeSort(array, 0, array.length - 1);
 
         System.out.println("\nSorted array");
         printArray(array);

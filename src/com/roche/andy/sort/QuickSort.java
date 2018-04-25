@@ -31,12 +31,12 @@ quick quickSort, while merge quickSort accesses data sequentially and the need o
 
 import static com.roche.andy.sort.BubbleSort.printArray;
 
-class QuickSort {
+public class QuickSort {
     /*
     This function takes last element as pivot, places the pivot element at its correct position in sorted array,
     and places all smaller (smaller than pivot) to left of pivot and all greater elements to right of pivot
     */
-    private int partition(int array[], int low, int high) {
+    private static int partition(int array[], int low, int high) {
         int pivot = array[high];
         int i = (low - 1); // index of smaller element
 
@@ -66,7 +66,7 @@ class QuickSort {
     low --> Starting index,
     high --> Ending index
     */
-    void quickSort(int array[], int low, int high) {
+    public static void quickSort(int array[], int low, int high) {
         if (low < high) {
             // partitionIndex is partitioning index, array[partitionIndex] is now at right place
             int partitionIndex = partition(array, low, high);
@@ -79,12 +79,10 @@ class QuickSort {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    // Driver program
     public static void main(String args[]) {
         int array[] = {10, 7, 8, 9, 1, 5};
 
-        QuickSort quickSort = new QuickSort();
-        quickSort.quickSort(array, 0, array.length - 1);
+        quickSort(array, 0, array.length - 1);
 
         System.out.println("sorted array");
         printArray(array);
