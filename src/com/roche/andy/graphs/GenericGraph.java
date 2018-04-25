@@ -3,83 +3,18 @@ package com.roche.andy.graphs;
 import java.util.ArrayList;
 import java.util.Stack;
 
+// Enum for the states used by the Depth first search
+enum State {
+    UNVISITED, VISITED
+}
+
 public class GenericGraph<T extends Comparable<T>> {
-    // Enum for the states used by the Depth first search
-    public enum State {
-        UNVISITED, VISITED
-    }
+    private class Edge {
+        private Vertex<T> x, y;
 
-    // Vertex class
-    public class Vertex {
-        private T value;
-        private ArrayList<Vertex> adjacencyList;
-        private State state;
-
-        public Vertex(T v) {
-            value = v;
-            adjacencyList = new ArrayList<>();
-            state = State.UNVISITED;
-        }
-
-        public boolean isNotVisited() {
-            return state != State.VISITED;
-        }
-
-        public State getState() {
-            return state;
-        }
-
-        public void setState(State s) {
-            state = s;
-        }
-
-        public void setVisited() {
-            state = State.VISITED;
-        }
-
-        public T getValue() {
-            return value;
-        }
-
-        public ArrayList<Vertex> getAdjacentList() {
-            return adjacencyList;
-        }
-
-        public void addNeighbor(Vertex n) {
-            adjacencyList.add(n);
-        }
-
-        public String toString() {
-            StringBuilder stringBuilder = new StringBuilder();
-
-            stringBuilder.append("Vertex: ").append(value).append(": ");
-
-            for (Vertex vertex : adjacencyList) {
-                stringBuilder.append(vertex.getValue()).append(" ");
-            }
-
-            return stringBuilder.toString();
-        }
-    }
-
-    // Edge class
-    public class Edge {
-        private Vertex x, y;
-
-        public Edge(T v1, T v2) {
-            x = findVertex(v1);
-
-            if (x == null) {
-                x = new Vertex(v1);
-                vertexList.add(x);
-            }
-
-            y = findVertex(v2);
-
-            if (y == null) {
-                y = new Vertex(v2);
-                vertexList.add(y);
-            }
+        Edge(Vertex<T> v1, Vertex<T> v2) {
+            x = v1;
+            y = v2;
 
             x.addNeighbor(y);
             y.addNeighbor(x);
@@ -90,7 +25,7 @@ public class GenericGraph<T extends Comparable<T>> {
         }
     }
 
-    private ArrayList<Vertex> vertexList;
+    private ArrayList<Vertex<T>> vertexList;
     private ArrayList<Edge> edgeList;
 
     public GenericGraph() {
@@ -99,13 +34,27 @@ public class GenericGraph<T extends Comparable<T>> {
     }
 
     public void addEdge(T x, T y) {
-        Edge e = new Edge(x, y);
+        Vertex<T> X = findVertex(x);
+
+        if (X == null) {
+            X = new Vertex<>(x);
+            vertexList.add(X);
+        }
+
+        Vertex<T> Y = findVertex(y);
+
+        if (Y == null) {
+            Y = new Vertex<>(y);
+            vertexList.add(Y);
+        }
+
+        Edge e = new Edge(X, Y);
         edgeList.add(e);
     }
 
-    public Vertex findVertex(T v) {
-        for (Vertex vertex : vertexList) {
-            if (vertex.getValue().compareTo(v) == 0) {
+    public Vertex<T> findVertex(T v) {
+        for (Vertex<T> vertex : vertexList) {
+            if (vertex.getValue().equals(v)) {
                 return vertex;
             }
         }
@@ -114,7 +63,7 @@ public class GenericGraph<T extends Comparable<T>> {
     }
 
     public void DFS() {
-        DFS(vertexList.get(0).value);
+        DFS(vertexList.get(0).getValue());
     }
 
     public void resetVisitedStatus() {
@@ -130,7 +79,7 @@ public class GenericGraph<T extends Comparable<T>> {
             return;
         }
 
-        Vertex vertexWithElement = findVertex(initialElement);
+        Vertex<T> vertexWithElement = findVertex(initialElement);
 
         if (vertexWithElement == null) {
             return;
@@ -139,13 +88,13 @@ public class GenericGraph<T extends Comparable<T>> {
         DFS(vertexWithElement);
     }
 
-    private void DFS(Vertex vertex) {
-        System.out.print(vertex.value + " ");
+    private void DFS(Vertex<T> vertex) {
+        System.out.print(vertex.getValue() + " ");
 
         vertex.setState(State.VISITED);
 
         // loop through neighbors
-        for (Vertex current : vertex.getAdjacentList()) {
+        for (Vertex<T> current : vertex.getAdjacentList()) {
             if (current.isNotVisited()) {
                 DFS(current);
             }
@@ -153,7 +102,7 @@ public class GenericGraph<T extends Comparable<T>> {
     }
 
     public void DFSUsingStack() {
-        DFSUsingStack(vertexList.get(0).value);
+        DFSUsingStack(vertexList.get(0).getValue());
     }
 
     public void DFSUsingStack(T initialElement) {
@@ -164,7 +113,7 @@ public class GenericGraph<T extends Comparable<T>> {
             return;
         }
 
-        Vertex vertexWithElement = findVertex(initialElement);
+        Vertex<T> vertexWithElement = findVertex(initialElement);
 
         if (vertexWithElement == null) {
             return;
@@ -173,28 +122,28 @@ public class GenericGraph<T extends Comparable<T>> {
         DFSUsingStack(vertexWithElement);
     }
 
-    private void DFSUsingStack(Vertex initialVertex) {
+    private void DFSUsingStack(Vertex<T> initialVertex) {
         // Create a stack for DFS
-        Stack<Vertex> stack = new Stack<>();
+        Stack<Vertex<T>> stack = new Stack<>();
 
         // Push the current source node
         stack.push(initialVertex);
 
         while (!stack.empty()) {
             // Pop a initialVertex from stack and print it
-            Vertex nextVertex = stack.peek();
+            Vertex<T> nextVertex = stack.peek();
             stack.pop();
 
             if (nextVertex.isNotVisited()) {
-                System.out.print(nextVertex.value + " ");
+                System.out.print(nextVertex.getValue() + " ");
                 nextVertex.setState(State.VISITED);
 
                 // Get all adjacent vertices of the popped vertex.
                 // If a adjacent has not been visited, then push it
                 // to the stack.
-                for (Vertex v : nextVertex.getAdjacentList()) {
-                    if (v.isNotVisited()) {
-                        stack.push(v);
+                for (Vertex<T> current : nextVertex.getAdjacentList()) {
+                    if (current.isNotVisited()) {
+                        stack.push(current);
                     }
                 }
             }

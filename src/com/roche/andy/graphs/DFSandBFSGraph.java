@@ -8,7 +8,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class DFSandBFSGraph {
-    static void DFS(GenericGraph.Vertex vertex) {
+    static void DFS(Vertex vertex) {
         // 1. Perform operation
         System.out.print(vertex.getValue() + " ");
 
@@ -17,7 +17,7 @@ public class DFSandBFSGraph {
 
         // 3. Recur for all the vertices adjacent to this vertex
         for (Object v : vertex.getAdjacentList()) {
-            GenericGraph.Vertex thisVertex = (GenericGraph.Vertex) v;
+            Vertex thisVertex = (Vertex) v;
 
             // 4. If the vertex is not visited, recurse on that vertex
             if (thisVertex.isNotVisited()) {
@@ -26,9 +26,9 @@ public class DFSandBFSGraph {
         }
     }
 
-    static void BFS(GenericGraph.Vertex vertex) {
+    static void BFS(Vertex vertex) {
         // 1. Create a queue for BFS
-        Queue<GenericGraph.Vertex> queue = new LinkedList<>();
+        Queue<Vertex> queue = new LinkedList<>();
 
         // 2. Mark the current vertex as visited
         vertex.setVisited();
@@ -39,14 +39,14 @@ public class DFSandBFSGraph {
         // 4. While the queue is not empty
         while (!queue.isEmpty()) {
             // 5. Dequeue a vertex from queue
-            GenericGraph.Vertex nextVertex = queue.poll();
+            Vertex nextVertex = queue.poll();
 
             // 6. Perform operation
             System.out.print(Objects.requireNonNull(nextVertex).getValue() + " ");
 
             // 7. Iterate through all adjacent vertices of the dequeued vertex
             for (Object v : nextVertex.getAdjacentList()) {
-                GenericGraph.Vertex thisVertex = (GenericGraph.Vertex) v;
+                Vertex thisVertex = (Vertex) v;
 
                 // 8. If a adjacent has not been visited, then mark it visited and enqueue it
                 if (thisVertex.isNotVisited()) {
@@ -58,9 +58,9 @@ public class DFSandBFSGraph {
     }
 
     @SuppressWarnings("unchecked")
-    static void DFSIterative(GenericGraph graph, GenericGraph.Vertex vertex) {
+    static void DFSIterative(GenericGraph graph, Vertex vertex) {
         // 1. Create a stack for DFS
-        Stack<GenericGraph.Vertex> stack = new Stack<>();
+        Stack<Vertex> stack = new Stack<>();
 
         // 2. Mark the current vertex as visited
         vertex.setVisited();
@@ -71,14 +71,14 @@ public class DFSandBFSGraph {
         // 4. While the stack is not empty
         while (!stack.isEmpty()) {
             // 5. Pop a vertex from stack
-            GenericGraph.Vertex nextVertex = stack.pop();
+            Vertex nextVertex = stack.pop();
 
             // 6. Perform operation
             System.out.print(Objects.requireNonNull(nextVertex).getValue() + " ");
 
             // 7. Iterate through all adjacent vertices of the dequeued vertex
             for (Object v : new Reversed(nextVertex.getAdjacentList())) {
-                GenericGraph.Vertex thisVertex = (GenericGraph.Vertex) v;
+                Vertex thisVertex = (Vertex) v;
 
                 // 8. If the vertex is not visited, mark it visited and push it on the stack
                 if (thisVertex.isNotVisited()) {
@@ -101,7 +101,7 @@ public class DFSandBFSGraph {
         graph.addEdge(3, 2);
         graph.addEdge(3, 4);
 
-        GenericGraph.Vertex startingVertex = graph.findVertex(0);
+        Vertex startingVertex = graph.findVertex(0);
 
         System.out.println("Breadth First Traversal (starting from vertex " + startingVertex.getValue() + ")");
 

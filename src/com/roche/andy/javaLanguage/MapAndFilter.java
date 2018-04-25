@@ -60,7 +60,7 @@ public class MapAndFilter {
                 new Person("Lawrence", 40)
         );
 
-        List<String> names = persons.stream().map(person -> person.getName()).collect(toList());
+        List<String> names = persons.stream().map(Person::getName).collect(toList());
         printList(names);
         System.out.println();
 
