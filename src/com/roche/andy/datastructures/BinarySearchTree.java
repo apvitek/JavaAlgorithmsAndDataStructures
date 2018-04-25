@@ -34,11 +34,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
         // If the tree is empty, return a new node
         if (root == null) {
             root = new Node<>(key);
-            return root;
-        }
 
-        // Otherwise, recur down the tree
-        if (key.compareTo(root.key) < 0) {
+            // Otherwise, recur down the tree
+        } else if (key.compareTo(root.key) < 0) {
             root.left = insertRecursive(root.left, key);
 
         } else if (key.compareTo(root.key) > 0) {
@@ -58,51 +56,36 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     // A recursive function to delete a key in BST
     private Node<T> deleteRecursive(Node<T> root, T key) {
-        // Base Case: If the tree is empty
-        if (root == null) {
-            return null;
-        }
+        // Check if the tree is not empty
+        if (root != null) {
+            // Otherwise, recur down the tree
+            if (key.compareTo(root.key) < 0) {
+                root.left = deleteRecursive(root.left, key);
 
-        // Otherwise, recur down the tree
-        if (key.compareTo(root.key) < 0) {
-            root.left = deleteRecursive(root.left, key);
+            } else if (key.compareTo(root.key) > 0) {
+                root.right = deleteRecursive(root.right, key);
 
-        } else if (key.compareTo(root.key) > 0) {
-            root.right = deleteRecursive(root.right, key);
-
-            // If key is same as root's key, then this is the node to be deleted
-        } else {
-            // *** Case 1: node with only one child or no child ***
-            if (root.left == null) {
-                return root.right;
-
-            } else if (root.right == null) {
-                return root.left;
-
+                // If key is same as root's key, then this is the node to be deleted
             } else {
-                // *** Case 2: node with two children ***
-                // Get the inorder successor (smallest in the right subtree)
-                root.key = minValue(root.right);
+                // *** Case 1: node with only one child or no child ***
+                if (root.left == null) {
+                    return root.right;
 
-                // Delete the inorder successor
-                root.right = deleteRecursive(root.right, root.key);
+                } else if (root.right == null) {
+                    return root.left;
+
+                } else {
+                    // *** Case 2: node with two children ***
+                    // Get the inorder successor (smallest in the right subtree)
+                    root.key = minValue(root.right);
+
+                    // Delete the inorder successor
+                    root.right = deleteRecursive(root.right, root.key);
+                }
             }
         }
 
         return root;
-    }
-
-    // ----- min -----
-
-    public T minValue(Node<T> root) {
-        T minimum = root.key;
-
-        while (root.left != null) {
-            minimum = root.left.key;
-            root = root.left;
-        }
-
-        return minimum;
     }
 
     // ----- inorder -----
@@ -152,6 +135,38 @@ public class BinarySearchTree<T extends Comparable<T>> {
             System.out.print(root.key + " ");
         }
     }
+
+    // ----- min and max -----
+
+    public T minValue() {
+        return minValue(root);
+    }
+
+    private T minValue(Node<T> root) {
+        T minimum = root.key;
+
+        while (root.left != null) {
+            minimum = root.left.key;
+            root = root.left;
+        }
+
+        return minimum;
+    }
+
+    public T maxValue() {
+        return maxValue(root);
+    }
+
+    private T maxValue(Node<T> root) {
+        T maximum = root.key;
+
+        while (root.right != null) {
+            maximum = root.right.key;
+            root = root.right;
+        }
+
+        return maximum;
+    }
 }
 
 class BSTTest {
@@ -184,6 +199,11 @@ class BSTTest {
         System.out.println("Postorder traversal of the modified tree: ");
         tree.postorder();
         System.out.println();
+
+        System.out.println();
+
+        System.out.println("Tree min: " + tree.minValue());
+        System.out.println("Tree max: " + tree.maxValue());
 
         System.out.println();
 
