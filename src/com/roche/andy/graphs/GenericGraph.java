@@ -1,5 +1,7 @@
 package com.roche.andy.graphs;
 
+import com.roche.andy.javaLanguage.Reversed;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -8,9 +10,11 @@ enum State {
     UNVISITED, VISITED
 }
 
+@SuppressWarnings("unchecked")
 public class GenericGraph<T extends Comparable<T>> {
     private class Edge {
-        private Vertex<T> x, y;
+        private final Vertex<T> x;
+        private Vertex<T> y;
 
         Edge(Vertex<T> v1, Vertex<T> v2) {
             x = v1;
@@ -141,9 +145,11 @@ public class GenericGraph<T extends Comparable<T>> {
                 // Get all adjacent vertices of the popped vertex.
                 // If a adjacent has not been visited, then push it
                 // to the stack.
-                for (Vertex<T> current : nextVertex.getAdjacentList()) {
-                    if (current.isNotVisited()) {
-                        stack.push(current);
+                for (Object current : new Reversed(nextVertex.getAdjacentList())) {
+                    Vertex<T> currentVertex = (Vertex<T>) current;
+
+                    if (currentVertex.isNotVisited()) {
+                        stack.push(currentVertex);
                     }
                 }
             }
@@ -171,16 +177,18 @@ public class GenericGraph<T extends Comparable<T>> {
     }
 }
 
-class DFSTest {
+class GraphTest {
     public static void main(String args[]) {
         GenericGraph<Integer> graph = new GenericGraph<>();
 
         graph.addEdge(0, 1);
-        graph.addEdge(0, 2);
-        graph.addEdge(1, 2);
-        graph.addEdge(2, 0);
-        graph.addEdge(2, 3);
-        graph.addEdge(3, 3);
+        graph.addEdge(0, 4);
+        graph.addEdge(0, 5);
+        graph.addEdge(1, 3);
+        graph.addEdge(1, 4);
+        graph.addEdge(2, 1);
+        graph.addEdge(3, 2);
+        graph.addEdge(3, 4);
 
         System.out.println(graph);
         System.out.println(graph.edgesToString());

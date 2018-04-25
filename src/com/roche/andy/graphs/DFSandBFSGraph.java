@@ -58,7 +58,7 @@ public class DFSandBFSGraph {
     }
 
     @SuppressWarnings("unchecked")
-    static void DFSIterative(GenericGraph graph, Vertex vertex) {
+    static void DFSIterative(Vertex vertex) {
         // 1. Create a stack for DFS
         Stack<Vertex> stack = new Stack<>();
 
@@ -117,6 +117,6 @@ public class DFSandBFSGraph {
 
         System.out.println("\n\nDepth First Traversal iterative (starting from vertex " + startingVertex.getValue() + ")");
 
-        DFSIterative(graph, startingVertex);
+        DFSIterative(startingVertex);
     }
 }
