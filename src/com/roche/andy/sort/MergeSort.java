@@ -22,19 +22,19 @@ import static com.roche.andy.sort.BubbleSort.printArray;
 public class MergeSort {
     // Merges two subarrays of array[], array[left..middle] and array[middle + 1..right]
     private static void merge(int array[], int left, int middle, int right) {
-        // Find sizes of two subarrays to be merged
+        // 1. Find sizes of two subarrays to be merged
         int sizeLeft = middle - left + 1;
         int sizeRight = right - middle;
 
-        // Create temp arrays
+        // 2. Create temp arrays
         int leftArray[] = new int[sizeLeft];
         int rightArray[] = new int[sizeRight];
 
-        // Copy data to temp arrays
+        // 3. Copy data to temp arrays
         System.arraycopy(array, left, leftArray, 0, sizeLeft);
         System.arraycopy(array, middle + 1, rightArray, 0, sizeRight);
 
-        /* Merge the temp arrays */
+        // 4. Merge the temp arrays
 
         // Initial indexes of first and second subarrays
         int i = 0, j = 0;

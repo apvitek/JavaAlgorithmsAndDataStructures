@@ -38,7 +38,7 @@ public class QuickSort {
     */
     private static int partition(int array[], int low, int high) {
         int pivot = array[high];
-        int i = (low - 1); // index of smaller element
+        int i = (low - 1); // index of smallest element
 
         for (int j = low; j < high; j++) {
             // If current element is smaller than or equal to pivot
