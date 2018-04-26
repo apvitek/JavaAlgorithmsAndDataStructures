@@ -2,17 +2,19 @@ package com.roche.andy.algorithms;
 
 public class MinCostClimbingStairs {
     public static int minCostClimbingStairs(int[] cost) {
-        int f1 = 0, f2 = 0;
+        int a = 0;
+        int b = 0;
+
         int[] memoized = new int[cost.length];
 
         for (int i = cost.length - 1; i >= 0; --i) {
-            memoized[i] = cost[i] + Math.min(f1, f2);
-            f2 = f1;
-            f1 = memoized[i];
+            memoized[i] = cost[i] + Math.min(a, b);
+            b = a;
+            a = memoized[i];
 
             System.out.println("memoized[" + i + "] = " + memoized[i]);
-            System.out.println("f1 = " + f1);
-            System.out.println("f2 = " + f2);
+            System.out.println("a = " + a);
+            System.out.println("b = " + b);
             System.out.println();
         }
 

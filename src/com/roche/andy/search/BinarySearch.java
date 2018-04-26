@@ -25,15 +25,15 @@ public class BinarySearch {
             // If the element is present at the middle itself
             if (array[middle] == element) {
                 return middle;
-            }
 
-            // If element is smaller than middle, then it can only be present in left subarray
-            if (array[middle] > element) {
+            } else if (array[middle] > element) {
+                // If element is smaller than middle, then it can only be present in left subarray
                 return binarySearch(array, left, middle - 1, element);
-            }
 
-            // Else the element can only be present in right subarray
-            return binarySearch(array, middle + 1, right, element);
+            } else {
+                // Else the element can only be present in right subarray
+                return binarySearch(array, middle + 1, right, element);
+            }
         }
 
         // We reach here when element is not present in array
