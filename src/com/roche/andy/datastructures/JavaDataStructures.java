@@ -28,6 +28,11 @@ Possible collections are (n = number of elements:
         - HashMap (unsorted dictionary) - contiguous unsorted
         - TreeMap (sorted dictionary) - discontiguous sorted
 
+Difference between TreeMap, LinkedHashMap, HashMap.
+    - TreeMap is sorted by keys.
+    - LinkedHashMap preserves the insertion order.
+    - HashMap has unique objects.
+
 In Java, trees are implemented as Red-Black trees. A Red-Black Tree solves the issues of constantly balancing
 binary trees. The number of levels can be reduced, thus having more horizontal distribution. With a million
 values inserted, it takes 22 comparisons to find the right value while searching. Re-balancing can he cheaper
@@ -44,6 +49,7 @@ In Java, there are almost no collisions, because the percent of occupancy is 75%
 */
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -55,14 +61,15 @@ public class JavaDataStructures {
     }
 
     public static void main(String args[]) {
-        HashMap<Integer, String> unsortedDictionary = new HashMap<>();
-        unsortedDictionary.put(5, "1");
-        unsortedDictionary.put(2, "4");
-        unsortedDictionary.put(4, "2");
-        unsortedDictionary.put(1, "5");
-        unsortedDictionary.put(3, "3");
+        HashMap<Integer, String> hashMap = new HashMap<>();
+        hashMap.put(1, "1");
+        hashMap.put(3, "3");
+        hashMap.put(4, "4");
+        hashMap.put(5, "5");
+        hashMap.put(2, "2");
 
-        printMap(unsortedDictionary);
+        System.out.println("Hash map: ");
+        printMap(hashMap);
         System.out.println();
 
         TreeMap<Integer, String> sortedDictionary = new TreeMap<>();
@@ -72,6 +79,18 @@ public class JavaDataStructures {
         sortedDictionary.put(4, "4");
         sortedDictionary.put(5, "5");
 
+        System.out.println("Sorted dictionary: ");
         printMap(sortedDictionary);
+        System.out.println();
+
+        LinkedHashMap<Integer, String> orderedByInsertionDictionary = new LinkedHashMap<>();
+        orderedByInsertionDictionary.put(5, "5");
+        orderedByInsertionDictionary.put(2, "2");
+        orderedByInsertionDictionary.put(4, "4");
+        orderedByInsertionDictionary.put(1, "1");
+        orderedByInsertionDictionary.put(3, "3");
+
+        System.out.println("Sorted by insertion dictionary: ");
+        printMap(orderedByInsertionDictionary);
     }
 }
