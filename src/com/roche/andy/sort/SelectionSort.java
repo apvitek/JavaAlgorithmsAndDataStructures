@@ -33,8 +33,10 @@ Time complexity: O(n^2) (two nested loops)
 Space complexity: O(1)
 */
 
+import static com.roche.andy.sort.BubbleSort.printArray;
+
 class SelectionSort {
-    private void selectionSort(int array[], int arrayLength) {
+    public static void selectionSort(int array[], int arrayLength) {
         // One by one move boundary of unsorted subarray
         for (int i = 0; i < arrayLength - 1; i++) {
             // Find the minimum element in unsorted array
@@ -53,22 +55,16 @@ class SelectionSort {
         }
     }
 
-    // Prints the array
-    private void printArray(int arr[]) {
-        for (int anArr : arr) {
-            System.out.print(anArr + " ");
-        }
-
-        System.out.println();
-    }
-
     // Driver code to test above
     public static void main(String args[]) {
-        SelectionSort selectionSort = new SelectionSort();
-        int arr[] = {64, 25, 12, 22, 11};
+        int array[] = {64, 25, 12, 22, 11};
 
-        selectionSort.selectionSort(arr, arr.length);
-        System.out.println("Sorted array");
-        selectionSort.printArray(arr);
+        System.out.print("Original array: ");
+        printArray(array);
+
+        selectionSort(array, array.length);
+
+        System.out.print("Sorted array: ");
+        printArray(array);
     }
 }

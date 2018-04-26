@@ -14,7 +14,7 @@ If right > left
    4. Merge the two halves sorted in step 2 and 3:
 
 Time complexity: O(n log(n)) (divides the array in two halves and takes linear time to merge them)
-Space complexity: O(n)
+Space complexity: Depends
 */
 
 import static com.roche.andy.sort.BubbleSort.printArray;
@@ -91,12 +91,12 @@ public class MergeSort {
     public static void main(String args[]) {
         int array[] = {12, 11, 13, 5, 6, 7};
 
-        System.out.println("Given Array");
+        System.out.print("Original array: ");
         printArray(array);
 
         mergeSort(array, 0, array.length - 1);
 
-        System.out.println("\nSorted array");
+        System.out.print("Sorted array: ");
         printArray(array);
     }
 }
