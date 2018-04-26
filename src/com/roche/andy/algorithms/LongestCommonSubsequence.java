@@ -5,10 +5,15 @@ import static java.lang.Math.max;
 // Time Complexity: O(mn) which is much better than the worst case time complexity of Naive Recursive implementation,
 // O(2^n)
 
-// Dynamic Programming Java implementation of LCS problem
 public class LongestCommonSubsequence {
     // Returns length of LCS for sequenceA[0..lengthA - 1], sequenceB[0..lengthB - 1]
-    int LCS(char[] sequenceA, char[] sequenceB, int lengthA, int lengthB) {
+    public static int LCS(String a, String b) {
+        char[] sequenceA = a.toCharArray();
+        char[] sequenceB = b.toCharArray();
+
+        int lengthA = sequenceA.length;
+        int lengthB = sequenceB.length;
+
         int memoized[][] = new int[lengthA + 1][lengthB + 1];
 
         // Following steps build memoized[lengthA + 1][lengthB + 1] in bottom up fashion.
@@ -36,14 +41,10 @@ public class LongestCommonSubsequence {
     // -----------------------------------------------------------------------------------------------------------------
 
     public static void main(String[] args) {
-        LongestCommonSubsequence lcs = new LongestCommonSubsequence();
         String s1 = "AGGTAB";
         String s2 = "GXTXAYB";
 
-        char[] sequenceA = s1.toCharArray();
-        char[] sequenceB = s2.toCharArray();
-
-        System.out.println("Length of LCS is " + lcs.LCS(sequenceA, sequenceB, sequenceA.length, sequenceB.length));
+        System.out.println("Length of LCS in " + s1 + " and " + s2 + " is " + LCS(s1, s2));
     }
 
 }

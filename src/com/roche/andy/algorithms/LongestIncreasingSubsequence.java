@@ -1,10 +1,10 @@
 package com.roche.andy.algorithms;
 
-// Dynamic Programming Java implementation of LIS problem
 // Time complexity: O(n^2)
+
 public class LongestIncreasingSubsequence {
     // Returns the length of the longest increasing subsequence in array[] of size arraySize
-    private static int LIS(int array[], int arraySize) {
+    public static int LIS(int array[], int arraySize) {
         int memoized[] = new int[arraySize];
         int i, j, max = 0;
 
@@ -47,7 +47,7 @@ public class LongestIncreasingSubsequence {
         return min;
     }
 
-    private static int LISBetter(int array[], int size) {
+    public static int LISBetter(int array[], int size) {
         // Add boundary case, when array size is one
         int[] memoized = new int[size];
         int len; // Always points empty slot
