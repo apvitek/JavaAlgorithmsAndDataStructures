@@ -22,11 +22,11 @@ public class QuickSort {
     This function takes last element as pivot, places the pivot element at its correct position in sorted array,
     and places all smaller (smaller than pivot) to left of pivot and all greater elements to right of pivot
     */
-    private static int partition(int array[], int low, int high) {
-        int pivot = array[high];
-        int i = (low - 1); // index of smallest element
+    private static int partition(int array[], int left, int right) {
+        int pivot = array[right];
+        int i = (left - 1); // index of smallest element
 
-        for (int j = low; j < high; j++) {
+        for (int j = left; j < right; j++) {
             // If current element is smaller than or equal to pivot
             if (array[j] <= pivot) {
                 i++;
@@ -38,10 +38,10 @@ public class QuickSort {
             }
         }
 
-        // Swap array[i + 1] and array[high] (or pivot)
+        // Swap array[i + 1] and array[right] (or pivot)
         int temp = array[i + 1];
-        array[i + 1] = array[high];
-        array[high] = temp;
+        array[i + 1] = array[right];
+        array[right] = temp;
 
         return i + 1;
     }
@@ -49,17 +49,17 @@ public class QuickSort {
     /*
     The main function that implements QuickSort()
     array[] --> Array to be sorted,
-    low --> Starting index,
-    high --> Ending index
+    left --> Starting index,
+    right --> Ending index
     */
-    public static void quickSort(int array[], int low, int high) {
-        if (low < high) {
+    public static void quickSort(int array[], int left, int right) {
+        if (left < right) {
             // partitionIndex is partitioning index, array[partitionIndex] is now at right place
-            int partitionIndex = partition(array, low, high);
+            int partitionIndex = partition(array, left, right);
 
             // Recursively selectionSort elements before partition and after partition
-            quickSort(array, low, partitionIndex - 1);
-            quickSort(array, partitionIndex + 1, high);
+            quickSort(array, left, partitionIndex - 1);
+            quickSort(array, partitionIndex + 1, right);
         }
     }
 
@@ -80,11 +80,11 @@ public class QuickSort {
 
 /*
 Why Quick Sort is preferred over MergeSort for sorting Arrays
-Quick Sort in its general form is an in-place quickSort (i.e. it does not require any extra storage) whereas merge quickSort
-requires O(n) extra storage, n denoting the array size which may be quite expensive. Allocating and de-allocating the
-extra space used for merge quickSort increases the running time of the algorithm. Comparing average complexity we find
-that both type of sorts have O(n log(n)) average complexity but the constants differ. For arrays, merge quickSort loses due
-to the use of extra O(n) storage space.
+Quick Sort in its general form is an in-place quickSort (i.e. it does not require any extra storage) whereas merge
+quickSort requires O(n) extra storage, n denoting the array size which may be quite expensive. Allocating and
+de-allocating the extra space used for merge quickSort increases the running time of the algorithm. Comparing average
+complexity we find that both type of sorts have O(n log(n)) average complexity but the constants differ. For arrays,
+merge quickSort loses due to the use of extra O(n) storage space.
 
 Why MergeSort is preferred over QuickSort for Linked Lists?
 In case of linked lists the case is different mainly due to difference in memory allocation of arrays and linked

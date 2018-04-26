@@ -11,7 +11,7 @@ empty.
     So we recur for right half.
     4. Else (x is smaller) recur for the left half.
 
-Time complexity: O(Log(n))
+Time complexity: O(log(n))
 Space complexity: O(1)
 */
 
