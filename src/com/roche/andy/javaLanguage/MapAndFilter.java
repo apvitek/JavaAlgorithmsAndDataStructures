@@ -3,6 +3,7 @@ package com.roche.andy.javaLanguage;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.lang.Math.pow;
 import static java.util.stream.Collectors.toList;
 
 class Person {
@@ -61,9 +62,22 @@ public class MapAndFilter {
                 new Person("Rachel", 11)
         );
 
+        // Get everyone's names
         List<String> names = persons.stream().map(Person::getName).collect(toList());
         System.out.print("Persons names: ");
         printList(names);
+        System.out.println();
+
+        // Get everyone's ages squared
+        List<Integer> squaredAges = persons.stream().map(person -> (int)pow(person.getAge(), 2)).collect(toList());
+        System.out.print("Ages squared: ");
+        printList(squaredAges);
+        System.out.println();
+
+        // Only get people with even ages
+        List<Person> evenAges = persons.stream().filter(person -> person.getAge() % 2 == 0).collect(toList());
+        System.out.print("People with even ages: ");
+        printList(evenAges);
         System.out.println();
 
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
