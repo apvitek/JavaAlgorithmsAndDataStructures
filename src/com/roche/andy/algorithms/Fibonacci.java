@@ -61,7 +61,7 @@ public class Fibonacci {
         return a + b;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int number = 1000;
 
         System.out.println("Fibonacci of " + number + ": " + fibonacci(number));

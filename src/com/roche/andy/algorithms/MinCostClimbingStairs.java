@@ -69,9 +69,10 @@ public class MinCostClimbingStairs {
         System.out.println("]");
     }
 
-    public static void main(String args[]) {
-//        System.out.println("Min cost is " + minCostClimbingStairsVerbose(new int[]{10, 15, 20}));
-//        System.out.println();
-        System.out.println("Min cost is " + minCostClimbingStairsVerbose(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1}));
+    public static void main(String[] args) {
+        //        System.out.println("Min cost is " + minCostClimbingStairsVerbose(new int[]{10, 15, 20}));
+        //        System.out.println();
+        System.out.println(
+                "Min cost is " + minCostClimbingStairsVerbose(new int[] { 1, 100, 1, 1, 1, 100, 1, 1, 100, 1 }));
     }
 }

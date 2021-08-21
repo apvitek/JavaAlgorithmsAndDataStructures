@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 // Vertex class
 public class Vertex<T> {
-    private T value;
-    private ArrayList<Vertex<T>> adjacencyList;
+    private final T value;
+
+    private final ArrayList<Vertex<T>> adjacencyList;
+
     private State state;
 
     public Vertex(T v) {

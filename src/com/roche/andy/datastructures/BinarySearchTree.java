@@ -4,8 +4,9 @@ package com.roche.andy.datastructures;
 @SuppressWarnings({"WeakerAccess"})
 public class BinarySearchTree<T extends Comparable<T>> {
     // Class containing left and right child of current node and key value
-    private class Node<K> {
+    private static class Node<K> {
         K key;
+
         Node<K> left, right;
 
         Node(K item) {
@@ -170,7 +171,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 }
 
 class BSTTest {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
 
         /* Let us create following BST

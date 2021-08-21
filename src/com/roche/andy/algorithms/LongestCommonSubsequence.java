@@ -14,7 +14,7 @@ public class LongestCommonSubsequence {
         int lengthA = sequenceA.length;
         int lengthB = sequenceB.length;
 
-        int memoized[][] = new int[lengthA + 1][lengthB + 1];
+        int[][] memoized = new int[lengthA + 1][lengthB + 1];
 
         // Following steps build memoized[lengthA + 1][lengthB + 1] in bottom up fashion.
         // Note that memoized[i][j] contains length of LCS of sequenceA[0..i - 1] and sequenceB[0..j - 1]

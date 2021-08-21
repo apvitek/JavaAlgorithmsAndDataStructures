@@ -6,14 +6,14 @@ import java.util.stream.IntStream;
 
 public class MinimumSumPartition {
     // Returns the minimum value of the difference of the two sets.
-    public static int minimumSumPartition(int array[]) {
+    public static int minimumSumPartition(int[] array) {
         int arrayLength = array.length;
 
         // Calculate sum of all elements
         int sum = IntStream.of(array).sum();
 
         // Create an array to store results of subproblems
-        boolean memoized[][] = new boolean[arrayLength + 1][sum + 1];
+        boolean[][] memoized = new boolean[arrayLength + 1][sum + 1];
 
         // Initialize first column as true.
         // 0 sum is possible  with all elements.
@@ -57,7 +57,7 @@ public class MinimumSumPartition {
     // -----------------------------------------------------------------------------------------------------------------
 
     public static void main(String[] args) {
-        int array[] = {3, 1, 4, 2, 2, 1};
+        int[] array = { 3, 1, 4, 2, 2, 1 };
         System.out.println("The minimum difference between 2 sets is " + minimumSumPartition(array));
     }
 }

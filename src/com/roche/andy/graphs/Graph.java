@@ -14,7 +14,8 @@ enum State {
 public class Graph<T extends Comparable<T>> {
     private class Edge {
         private final Vertex<T> x;
-        private Vertex<T> y;
+
+        private final Vertex<T> y;
 
         Edge(Vertex<T> v1, Vertex<T> v2) {
             x = v1;
@@ -29,8 +30,9 @@ public class Graph<T extends Comparable<T>> {
         }
     }
 
-    private ArrayList<Vertex<T>> vertexList;
-    private ArrayList<Edge> edgeList;
+    private final ArrayList<Vertex<T>> vertexList;
+
+    private final ArrayList<Edge> edgeList;
 
     public Graph() {
         vertexList = new ArrayList<>();
@@ -178,7 +180,7 @@ public class Graph<T extends Comparable<T>> {
 }
 
 class GraphTest {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Graph<Integer> graph = new Graph<>();
 
         graph.addEdge(0, 1);

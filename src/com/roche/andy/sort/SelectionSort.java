@@ -36,7 +36,7 @@ Space complexity: O(1)
 import static com.roche.andy.sort.BubbleSort.printArray;
 
 class SelectionSort {
-    public static void selectionSort(int array[], int arrayLength) {
+    public static void selectionSort(int[] array, int arrayLength) {
         // One by one move boundary of unsorted subarray
         for (int i = 0; i < arrayLength - 1; i++) {
             // Find the minimum element in unsorted array
@@ -56,8 +56,8 @@ class SelectionSort {
     }
 
     // Driver code to test above
-    public static void main(String args[]) {
-        int array[] = {64, 25, 12, 22, 11};
+    public static void main(String[] args) {
+        int[] array = { 64, 25, 12, 22, 11 };
 
         System.out.print("Original array: ");
         printArray(array);

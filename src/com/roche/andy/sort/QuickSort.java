@@ -22,7 +22,7 @@ public class QuickSort {
     This function takes last element as pivot, places the pivot element at its correct position in sorted array,
     and places all smaller (smaller than pivot) to left of pivot and all greater elements to right of pivot
     */
-    private static int partition(int array[], int left, int right) {
+    private static int partition(int[] array, int left, int right) {
         int pivot = array[right];
         int i = (left - 1); // index of smallest element
 
@@ -52,7 +52,7 @@ public class QuickSort {
     left --> Starting index,
     right --> Ending index
     */
-    public static void quickSort(int array[], int left, int right) {
+    public static void quickSort(int[] array, int left, int right) {
         if (left < right) {
             // partitionIndex is partitioning index, array[partitionIndex] is now at right place
             int partitionIndex = partition(array, left, right);
@@ -65,8 +65,8 @@ public class QuickSort {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public static void main(String args[]) {
-        int array[] = {10, 7, 8, 9, 1, 5};
+    public static void main(String[] args) {
+        int[] array = { 10, 7, 8, 9, 1, 5 };
 
         System.out.println("Original array: ");
         printArray(array);

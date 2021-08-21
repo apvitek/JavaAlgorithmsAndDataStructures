@@ -18,7 +18,7 @@ Space complexity: O(1)
 // Java implementation of recursive Binary Search
 public class BinarySearch {
     // Returns index of element if it is present in array[left...right], else returns -1
-    public static int binarySearch(int array[], int left, int right, int element) {
+    public static int binarySearch(int[] array, int left, int right, int element) {
         if (right >= left) {
             int middle = left + (right - left) / 2;
 
@@ -43,8 +43,8 @@ public class BinarySearch {
     // -----------------------------------------------------------------------------------------------------------------
 
     // Driver method to test above
-    public static void main(String args[]) {
-        int array[] = {2, 3, 4, 10, 40};
+    public static void main(String[] args) {
+        int[] array = { 2, 3, 4, 10, 40 };
         int element = 10;
 
         int result = binarySearch(array, 0, array.length - 1, element);

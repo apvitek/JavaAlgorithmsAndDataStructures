@@ -4,8 +4,8 @@ package com.roche.andy.algorithms;
 
 public class LongestIncreasingSubsequence {
     // Returns the length of the longest increasing subsequence in array[] of size arraySize
-    public static int LIS(int array[], int arraySize) {
-        int memoized[] = new int[arraySize];
+    public static int LIS(int[] array, int arraySize) {
+        int[] memoized = new int[arraySize];
         int i, j, max = 0;
 
         // Initialize memoized values for all indexes
@@ -33,7 +33,7 @@ public class LongestIncreasingSubsequence {
     // -----------------------------------------------------------------------------------------------------------------
 
     // Time complexity: O(n log(n))
-    private static int ceilIndex(int array[], int max, int min, int key) {
+    private static int ceilIndex(int[] array, int max, int min, int key) {
         while (min - max > 1) {
             int m = max + (min - max) / 2;
 
@@ -47,7 +47,7 @@ public class LongestIncreasingSubsequence {
         return min;
     }
 
-    public static int LISBetter(int array[], int size) {
+    public static int LISBetter(int[] array, int size) {
         // Add boundary case, when array size is one
         int[] memoized = new int[size];
         int len; // Always points empty slot
@@ -76,8 +76,8 @@ public class LongestIncreasingSubsequence {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public static void main(String args[]) {
-        int array[] = {10, 22, 9, 33, 21, 50, 41, 60};
+    public static void main(String[] args) {
+        int[] array = { 10, 22, 9, 33, 21, 50, 41, 60 };
         System.out.println("Length of longest increasing subsequence is " + LIS(array, array.length));
         System.out.println("Length of longest increasing subsequence is " + LISBetter(array, array.length));
     }

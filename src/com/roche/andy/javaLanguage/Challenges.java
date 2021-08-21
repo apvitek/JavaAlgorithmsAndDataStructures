@@ -6,7 +6,7 @@ import static com.roche.andy.sort.MergeSort.mergeSort;
 
 public class Challenges {
     // Given an array of distinct integer values, count the number of pairs of integers that have difference K.
-    private static void firstChallenge(int K, int list[]) {
+    private static void firstChallenge(int K, int[] list) {
         int count = 0;
 
         // 1. Sort list - O(n log(n))
@@ -71,8 +71,8 @@ public class Challenges {
         }
     }
 
-    public static void main(String args[]) {
-        firstChallenge(3, new int[]{1, 7, 5, 9, 2, 12, 3});
+    public static void main(String[] args) {
+        firstChallenge(3, new int[] { 1, 7, 5, 9, 2, 12, 3 });
 
         System.out.println();
 

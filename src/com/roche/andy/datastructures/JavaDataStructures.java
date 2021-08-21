@@ -60,7 +60,7 @@ public class JavaDataStructures {
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         HashMap<Integer, String> hashMap = new HashMap<>();
         hashMap.put(1, "1");
         hashMap.put(3, "3");

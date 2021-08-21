@@ -24,7 +24,7 @@ public class HashTable<K, V> {
 
     // Load threshold
     @SuppressWarnings("FieldCanBeLocal")
-    private static double loadThreshold = 0.7;
+    private static final double loadThreshold = 0.7;
 
     // bucketArray is used to store array of chains
     private ArrayList<HashNode> bucketArray;

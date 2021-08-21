@@ -31,7 +31,7 @@ Space complexity: O(1)
 
 // Java program for implementation of Bubble Sort
 class BubbleSort {
-    public static void bubbleSort(int array[], int arrayLength) {
+    public static void bubbleSort(int[] array, int arrayLength) {
         for (int i = 0; i < arrayLength - 1; i++) {
             for (int j = 0; j < arrayLength - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
@@ -47,7 +47,7 @@ class BubbleSort {
     // -----------------------------------------------------------------------------------------------------------------
 
     // Prints the array
-    public static void printArray(int array[]) {
+    public static void printArray(int[] array) {
         for (int element : array) {
             System.out.print(element + " ");
         }
@@ -55,8 +55,8 @@ class BubbleSort {
         System.out.println();
     }
 
-    public static void main(String args[]) {
-        int array[] = {64, 34, 25, 12, 22, 11, 90};
+    public static void main(String[] args) {
+        int[] array = { 64, 34, 25, 12, 22, 11, 90 };
 
         System.out.print("Original array: ");
         printArray(array);

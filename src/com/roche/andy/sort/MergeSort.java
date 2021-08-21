@@ -21,14 +21,14 @@ import static com.roche.andy.sort.BubbleSort.printArray;
 
 public class MergeSort {
     // Merges two subarrays of array[], array[left..middle] and array[middle + 1..right]
-    private static void merge(int array[], int left, int middle, int right) {
+    private static void merge(int[] array, int left, int middle, int right) {
         // 1. Find sizes of two subarrays to be merged
         int sizeLeft = middle - left + 1;
         int sizeRight = right - middle;
 
         // 2. Create temp arrays
-        int leftArray[] = new int[sizeLeft];
-        int rightArray[] = new int[sizeRight];
+        int[] leftArray = new int[sizeLeft];
+        int[] rightArray = new int[sizeRight];
 
         // 3. Copy data to temp arrays
         System.arraycopy(array, left, leftArray, 0, sizeLeft);
@@ -71,7 +71,7 @@ public class MergeSort {
     }
 
     // Main function that sorts array[left..right] using merge()
-    public static void mergeSort(int array[], int left, int right) {
+    public static void mergeSort(int[] array, int left, int right) {
         if (left < right) {
             // Find the middle point
             int middle = (left + right) / 2;
@@ -88,8 +88,8 @@ public class MergeSort {
     // -----------------------------------------------------------------------------------------------------------------
 
     // Driver method
-    public static void main(String args[]) {
-        int array[] = {12, 11, 13, 5, 6, 7};
+    public static void main(String[] args) {
+        int[] array = { 12, 11, 13, 5, 6, 7 };
 
         System.out.print("Original array: ");
         printArray(array);

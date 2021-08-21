@@ -89,7 +89,7 @@ public class DFSandBFS {
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Graph<Integer> graph = new Graph<>();
 
         graph.addEdge(0, 1);
